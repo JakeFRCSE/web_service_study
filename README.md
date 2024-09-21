@@ -7,22 +7,16 @@
 - `SAMPLE_README.md`가 단순한 형태의 예제이니 참고하세요.
 ### 1. 프로젝트 소개
 #### 1.1. 개발배경 및 필요성
-> AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 대회에서 좋은 모델을 만드는 것에 그치지 않고 이를 직접 배포해보는 프로젝트를 진행하고자 해당 프로젝트가 시작되었습니다.
+AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 대회에서 좋은 모델을 만드는 것에 그치지 않고 이를 직접 배포해보는 프로젝트를 진행하고자 해당 프로젝트가 시작되었습니다.
 
 #### 1.2. 개발 목표 및 주요 내용
-> 음식점의 후기를 자연어로 입력받으면 해당 후기를 남긴 유저의 별점을 예측하는 프로그램을 배포하는 일련의 과정을 스터디하고 경험하는 것을 목표로 하고 있습니다.
+음식점의 후기를 자연어로 입력받으면 해당 후기를 남긴 유저의 별점을 예측하는 프로그램을 배포하는 일련의 과정을 스터디하고 경험하는 것을 목표로 하고 있습니다.
 
 #### 1.3. 세부내용
-> - 프론트엔드: Next.JS를 활용한 프롬프트 시스템
-> - 백엔드: Django + Pytorch로 AI 모델 API화, Django ORM <-> PostgreSQL
-> - AI: AI모델 튜닝 및 인스턴스화
->   - 제한사항: AI 모델을 위해 메모리, CPU 등의 하드웨어 성능이 뒷받침 되어야 할 것으로 보임. -> AWS 스펙 조절 및 프롬프트 호출 횟수 제한
-
-#### 1.4. 기존 서비스 대비 차별성
-> 위 내용을 작성하세요.
-
-#### 1.5. 사회적가치 도입 계획
-> 위 내용을 작성하세요.
+- 프론트엔드: Next.JS를 활용한 프롬프트 시스템
+- 백엔드: Django + Pytorch로 AI 모델 API화, Django ORM <-> PostgreSQL
+- AI: AI모델 튜닝 및 인스턴스화
+  - 제한사항: AI 모델을 위해 메모리, CPU 등의 하드웨어 성능이 뒷받침 되어야 할 것으로 보임. -> AWS 스펙 조절 및 프롬프트 호출 횟수 제한
 
 
 ### 2. 상세설계
@@ -75,16 +69,11 @@
 ### 6. 팀 소개
 > 팀원 소개 & 구성원 별 역할 분담 & 간단한 연락처를 작성하세요.
 #### 🍱 배고픈사람들
-- 이동훈 - 총괄
-  - therqq13@pusan.ac.kr
-- 조현성 - Pytorch
-  - sungsam3312@pusan.ac.kr
-- 안소희 - Pytorch
-  - soheean1370@pusan.ac.kr
-- 박준혁 - 백엔드
-  - eppi001004@gmail.com
-- 곽도연 - 프론트엔드
-  - gdy0210@pusan.ac.kr
+| 이동훈 | 조현성 | 안소희 | 박준혁 | 곽도연 |
+|:-------:|:-------:|:-------:|:-------:|:-------:|
+|<img width="100px" alt="이동훈" src="https://avatars.githubusercontent.com/u/67902252?s=60&v=4/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="조현성" src="https://avatars.githubusercontent.com/u/138447029?v=4" /> | <img width="100px" alt="안소희" src="https://avatars.githubusercontent.com/u/127065983?s=60&v=4" /> |<img width="100px" alt="박준혁" src="https://avatars.githubusercontent.com/u/162955476?s=60&v=4" /> | <img width="100px" alt="곽도연" src="https://avatars.githubusercontent.com/u/165464282?s=60&v=4" /> |
+| therqq13@pusan.ac.kr | sungsam3312@pusan.ac.kr | soheean1370@pusan.ac.kr | eppi001004@gmail.com | gdy0210@pusan.ac.kr |
+| 총괄 <br/> 인프라 구축 | Pytorch 개발 | Pytorch 개발 | 백엔드 개발 | 프론트엔드 개발 |
 
 ### 7. 해커톤 참여 후기
 > 팀원 별 해커톤 참여 후기를 작성하세요.
