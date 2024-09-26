@@ -25,6 +25,8 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 �
 
 #### 2.1. 사용 기술
 > 스택 별(backend, frontend, designer등) 사용한 기술 및 버전을 작성하세요.
+> Frontend:
+> Backend: Django==5.1, djangorestframework==3.15.2, sqlparse==0.5.1
 > 
 > ex) React.Js - React14, Node.js - v20.0.2
 
