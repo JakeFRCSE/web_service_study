@@ -19,9 +19,14 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 �
   - 제한사항: AI 모델을 위해 메모리, CPU 등의 하드웨어 성능이 뒷받침 되어야 할 것으로 보임. -> AWS 스펙 조절 및 프롬프트 호출 횟수 제한
 
 #### 1.4. 주차 별 계획 및 진행사항
+
+- **F**: Front-End
+- **B**: Back-End
+- **A**: AI & Pytorch
+
 | 주차 | 키워드 | 계획 | 진행 내역 |
 |:-------:|:-------:|:-------:|:-------:|
-| 1주차 | React | Web 기초 스터디 **F** <br> React 스터디 **F** | 1. [HTML, CSS, JS](https://www.notion.so/HTML-JS-CSS-6e0d3350fd314086b12fbccc3e35e7cf) <br> 2. [React](https://www.notion.so/React-5d06778aa9b541d8ba95270fd4db5591) |
+| 1주차 | React | Web 기초 스터디 **F** <br> React 스터디 **F** | 1. [HTML, CSS, JS](./documents/week1/Web%20Basic.md) <br> 2. [React](https://www.notion.so/React-5d06778aa9b541d8ba95270fd4db5591) |
 | 2주차 | HTTP, Figma | HTTP 기반 API 스터디 **F,B,A** <br> Figma로 Wireframe 설계 **F** | 1. [HTTP 기반 API](https://www.notion.so/HTTP-API-64249f434f934fb3a7da7c9062b9fad3) |
 | 3주차 | Django, REST API | Django 기초 스터디 **B,A** <br> Django REST Framework 스터디 **B,A** | 1. [Django](https://www.notion.so/Django-1097102ef977804a9c81df71899c85be) |
 | 4주차 | Next.js, REST API | Next.js로 UI 구축 -1- **F** <br> DB (SQLite) 스터디 **B** | - |
