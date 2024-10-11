@@ -135,3 +135,6 @@ async function foo(){
 [CSS W3schools](https://www.w3schools.com/css/default.asp)
 - Layout 배치는 `flex`와 `grid` 요소를 사용하면 수월하게 가능하다!
 - CSS는 옵션이 굉장히 많기 때문에, 미리 전체를 공부하지 말고 필요할때마다 검색하면서 알아가는 방법이 훨씬 빠르다.
+- css 파일
+- inline-css
+- module.css
