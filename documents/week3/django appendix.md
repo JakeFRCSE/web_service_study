@@ -153,7 +153,7 @@ filter() VS get() 없는 값 조회할때 terminal 상태
 
 </aside>
 
-# Appendix (ForeignKey, CASCADE option)
+# ForeignKey, CASCADE option
 
 ***<< ForeignKey >>***
 
@@ -187,5 +187,3 @@ filter() VS get() 없는 값 조회할때 terminal 상태
     - ON DELETE SET NULL
         - 참조하고 있던 테이블이 사라지면 fk값을 NULL로 바꿈.
 </aside>
-
-ref: << [https://papimon.tistory.com/90](https://papimon.tistory.com/90) >>
