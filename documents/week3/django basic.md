@@ -267,25 +267,26 @@ COMMIT;
 
 ![스크린샷 2024-10-20 오후 10.16.36.png](Django%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A9%E1%86%AB%20122a18d08ab080ec9804d37b8ecfe471/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-10-20_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_10.16.36.png)
 
+<br/><br/><br/><br/>
 
-> 
-    `path()`
+`path()`
 
-    - django.urls의 메서드
-    - The [**`path()`**](https://docs.djangoproject.com/en/5.1/ref/urls/#django.urls.path) function expects at least two arguments: **`route`** and **`view`**
-    - `path()` 메서드는 2개의 parameter를 필수로 요구한다. `path(route, view)`
-        - route : url패턴을 가진 문자열
-        - view : HttpRequest 객체를 첫번째 인수로 하고, 경로로 부터 캡쳐된 값을 키워드 인수로 하여 특정한 view 함수를 호출
+- django.urls의 메서드
+- The [**`path()`**](https://docs.djangoproject.com/en/5.1/ref/urls/#django.urls.path) function expects at least two arguments: **`route`** and **`view`**
+- `path()` 메서드는 2개의 parameter를 필수로 요구한다. `path(route, view)`
+    - route : url패턴을 가진 문자열
+    - view : HttpRequest 객체를 첫번째 인수로 하고, 경로로 부터 캡쳐된 값을 키워드 인수로 하여 특정한 view 함수를 호출
     - 이때 angle bracket을 사용해서 path(”<int: question_id>”) 이런식으로 만들면 django는 이부분을 캡쳐해서 키워드 인수로 보낸다.
 
     `include()`
 
-    - django.urls의 메서드
-    - 다른 app의 URLconfs를 참조할 수 있게 한다. 즉, 다른 app의 urls.py의 urlpatterns를 참조할 수 있게한다.
-    - 위 예제에서는 include(’polls.urls’)이렇게 쓰였으므로 요청이 [`http://127.0.0.1:8000/polls/`](http://127.0.0.1:8000/polls/) 이런식으로 들어왔다면 polls app의 urls.py파일로 제어를 넘겨서 거기 있는 urlpatterns에서 일치하는 url패턴 찾기를 시도한다.
-    - django는 include()를 만나서 매칭이되면 url에 매칭이된 포인트까지는 짜르고 남은 부분을 전달한다.
-        - Ex) url요청이 `http://127.0.0.1:8000/polls/abc` 였다면 `path('polls/', include(polls.urls)`)에 매칭된다. 이때 polls.urls에 url을 넘길때 polls까지 짜르고 /abc부분을 polls.urls로 보낸다.
+- django.urls의 메서드
+- 다른 app의 URLconfs를 참조할 수 있게 한다. 즉, 다른 app의 urls.py의 urlpatterns를 참조할 수 있게한다.
+- 위 예제에서는 include(’polls.urls’)이렇게 쓰였으므로 요청이 [`http://127.0.0.1:8000/polls/`](http://127.0.0.1:8000/polls/) 이런식으로 들어왔다면 polls app의 urls.py파일로 제어를 넘겨서 거기 있는 urlpatterns에서 일치하는 url패턴 찾기를 시도한다.
+- django는 include()를 만나서 매칭이되면 url에 매칭이된 포인트까지는 짜르고 남은 부분을 전달한다.
+  - Ex) url요청이 `http://127.0.0.1:8000/polls/abc` 였다면 `path('polls/', include(polls.urls)`)에 매칭된다. 이때 polls.urls에 url을 넘길때 polls까지 짜르고 /abc부분을 polls.urls로 보낸다.
 
+<br/><br/><br/><br/>
 
 ### request
 
