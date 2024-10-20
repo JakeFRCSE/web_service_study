@@ -76,7 +76,7 @@
 
 - `python manage.py startapp [app-name]` 을 이용해서 app을 생성하면 내부에 models.py라는 파일이 생성되는 것을 볼 수 있다. 해당 파일에 원하는 테이블의 스키마를 클래스형태로 정의해서 사용한다. 
 
-- 정의만 한다고 DB에 바로 반영 되는 것이 아니다. migration을 통해서 [models.py](http://models.py)에서 정의한 것을 DB에 반영해 줘야한다. 
+- 정의만 한다고 DB에 바로 반영 되는 것이 아니다. migration을 통해서 [models.py](http://models.py)에서 정의한 것을 DB에 반영해 줘야한다. <br/><br/>
 
 
 
