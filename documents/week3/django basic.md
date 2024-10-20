@@ -1,4 +1,4 @@
-# Django 문서정리 초본
+# django basic
 
 > 
     django Tutorial을 따라하면서 모르는게 생겼을때 해당 페이지 찾아보고 하면서 공부하기.
