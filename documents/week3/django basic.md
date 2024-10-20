@@ -46,11 +46,10 @@
 
 
 
+# MVT 패턴 
 
-MVT 패턴 
-
-![스크린샷 2024-10-19 오후 12.50.11.png]                (Django%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A9%E1%86%AB%20122a18d08ab080ec9804d37b8ecfe471/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-10-19_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_12.50.11.png)
-
+![스크린샷 2024-10-19 오후 12.50.11.png](Django%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A9%E1%86%AB%20122a18d08ab080ec9804d37b8ecfe471/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-10-19_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_12.50.11.png)
+>
     1. 클라이언트로부터 요청을 받으면 URLconf를 이용하여 URL을 분석한다. 
     
         ⇒ 일단 처음 요청을 받으면 settings.py에 있는 ROOT_URLCONF로 이동해서urlpatterns에 매핑할 url을 찾는다. 
@@ -65,32 +64,31 @@ MVT 패턴
 
 ### a. ORM
 
-⇒ ORM(Object Relational Mapping)이란 객체와 관계형 데이터베이스를 Mapping 시켜 주는 것을 말한다. 
+- ORM(Object Relational Mapping)이란 객체와 관계형 데이터베이스를 Mapping 시켜 주는 것을 말한다. 
 
 `객체(Model) ↔ ORM ↔ DB`   이때 객체가 Model이다. 
 
-⇒ 로직을 구성하면서 CRUD를 위해 SQL을 작성할 필요없이 객체를 정의하고 ORM에서 제공하는 인터페이스(메서드)를 이용해 데이터베이스의 데이터에 쉽게 접근하는 방법을 제공한다. 
+- 로직을 구성하면서 CRUD를 위해 SQL을 작성할 필요없이 객체를 정의하고 ORM에서 제공하는 인터페이스(메서드)를 이용해 데이터베이스의 데이터에 쉽게 접근하는 방법을 제공한다. 
 
 ### b. [models.py](http://models.py)
 
-⇒ project의 각 app에는 [models.py](http://models.py)라는 파일이 있다. 해당 파일에서 사용할 테이블의 스키마를 클래스 형태로 정의한다.  
+- project의 각 app에는 [models.py](http://models.py)라는 파일이 있다. 해당 파일에서 사용할 테이블의 스키마를 클래스 형태로 정의한다.  
 
-⇒ `python manage.py startapp [app-name]` 을 이용해서 app을 생성하면 내부에 models.py라는 파일이 생성되는 것을 볼 수 있다. 해당 파일에 원하는 테이블의 스키마를 클래스형태로 정의해서 사용한다. 
+- `python manage.py startapp [app-name]` 을 이용해서 app을 생성하면 내부에 models.py라는 파일이 생성되는 것을 볼 수 있다. 해당 파일에 원하는 테이블의 스키마를 클래스형태로 정의해서 사용한다. 
 
-⇒ 정의만 한다고 DB에 바로 반영 되는 것이 아니다. migration을 통해서 [models.py](http://models.py)에서 정의한 것을 DB에 반영해 줘야한다. 
+- 정의만 한다고 DB에 바로 반영 되는 것이 아니다. migration을 통해서 [models.py](http://models.py)에서 정의한 것을 DB에 반영해 줘야한다. 
 
-<aside>
-💡
 
-models.py에서 테이블 스키마 정의하고 migration을 통해서 DB에 반영하기 
+
+#### models.py에서 테이블 스키마 정의하고 migration을 통해서 DB에 반영하기 
 
 1. [models.py](http://models.py)에 model 정의 (혹은 수정/삭제)
 
 ![스크린샷 2024-10-18 오후 6.00.35.png](Django%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A9%E1%86%AB%20122a18d08ab080ec9804d37b8ecfe471/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-10-18_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.00.35.png)
 
-⇒ 각 model은 django.db.models.Model을 상속받아야 한다.
+-  각 model은 django.db.models.Model을 상속받아야 한다.
 
-1. `python manage.py makemigrations [app-name]` 명령어를 통해서 migration파일 생성해주기
+2. `python manage.py makemigrations [app-name]` 명령어를 통해서 migration파일 생성해주기
 
 ![스크린샷 2024-10-18 오후 5.58.29.png](Django%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A9%E1%86%AB%20122a18d08ab080ec9804d37b8ecfe471/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-10-18_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_5.58.29.png)
 
@@ -98,45 +96,46 @@ models.py에서 테이블 스키마 정의하고 migration을 통해서 DB에 �
 
 ![스크린샷 2024-10-18 오후 6.05.33.png](Django%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A9%E1%86%AB%20122a18d08ab080ec9804d37b8ecfe471/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-10-18_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.05.33.png)
 
-⇒ polls.migrations에 0001_initial.py 파일이 생성된 것을 볼 수 있다.
+- polls.migrations에 0001_initial.py 파일이 생성된 것을 볼 수 있다.
 
-⇒ `python manage.py makemigrations [app-name]` 에서 특정 앱을 지칭해주지 않아도 되지만 그렇게 되면 의도치 않은 migration도 생성될 수 있어서 가급적이면 특정 app을 지칭해 주자.
+- `python manage.py makemigrations [app-name]` 에서 특정 앱을 지칭해주지 않아도 되지만 그렇게 되면 의도치 않은 migration도 생성될 수 있어서 가급적이면 특정 app을 지칭해 주자.
 
-1. `python manage.py migrate [app-name` 이용해서 생성한 migration을 실제 DB에 반영해 준다.
+3. `python manage.py migrate [app-name` 이용해서 생성한 migration을 실제 DB에 반영해 준다.
     
     ![스크린샷 2024-10-18 오후 6.11.51.png](Django%20%E1%84%86%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5%20%E1%84%8E%E1%85%A9%E1%84%87%E1%85%A9%E1%86%AB%20122a18d08ab080ec9804d37b8ecfe471/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2024-10-18_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_6.11.51.png)
     
-</aside>
+
 
 ## c. migration
 
  `migrations` 에 대해서 좀 더 알아보자 
 
 ### migrations이란
+>
+    - django에서 migrations이란 model의 변경사항을 DB에 전파하는 django의 방법이다. 
 
-⇒ django에서 migrations이란 model의 변경사항을 DB에 전파하는 django의 방법이다. 
+    - DB shcema를 git처럼 버전으로 나눠서 관리할 수 있게 해준다.
 
-⇒ DB shcema를 git처럼 버전으로 나눠서 관리할 수 있게 해준다.
-
-⇒ `makemigrations` 를 이용해서 새로운 버전의 schema를 생성할 수 있고 `migrate` 를 이용해서 새로 생성한 schama를 적용하거나 이전 버전으로 되돌릴 수 있다. 
+    - `makemigrations` 를 이용해서 새로운 버전의 schema를 생성할 수 있고 `migrate` 를 이용해서 새로 생성한 schama를 적용하거나 이전 버전으로 되돌릴 수 있다. 
 
 ### 주요 명령어
+> 
 
-1. `python manage.py makemigrations [app-name]` 
+    1. `python manage.py makemigrations [app-name]` 
     
-    ⇒ django에게 내 model에 변경사항이 생겼다는 것을 알려준다.
+        - django에게 내 model에 변경사항이 생겼다는 것을 알려준다.
     
-    ⇒ model변경사항을 기반으로 migration파일을 생성 
+        - model변경사항을 기반으로 migration파일을 생성 
     
-    ⇒ 이때 [app-name]을 생략하면 전체 app에 대해서 실행된다. 다만 이렇게 할 시에 예상치 못한 migration이 생성될 수도 있어서 app-name을 지정해서 예상치 못한 migration생성을 방지하자.
+        - 이때 [app-name]을 생략하면 전체 app에 대해서 실행된다. 다만 이렇게 할 시에 예상치 못한 migration이 생성될 수도 있어서 app-name을 지정해서 예상치 못한 migration생성을 방지하자.
     
 
-1. `python manage.py migrate [app-name]` 
+    2. `python manage.py migrate [app-name]` 
     
-    ⇒ 생성한 migration을 실제 DB에 적용 혹은 적용한 migration을 DB에서 적용 해제 할때 사용한다. 
+        - 생성한 migration을 실제 DB에 적용 혹은 적용한 migration을 DB에서 적용 해제 할때 사용한다. 
     
-    <aside>
-    💡
+    
+
     
     적용한 migration을 DB에서 적용 해제.
     
