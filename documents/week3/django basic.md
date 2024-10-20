@@ -26,20 +26,20 @@ Django Tutorial을 따라하면서 모르는게 생겼을때 해당 페이지 �
         - `include()` 를 이용해서 project에서 사용하는 app의 urls.py로 제어를 넘길 수 있다.
 
 
-  >  <aside>
-💡
 
-APP VS PROJECT
+>    💡
 
-⇒ django app은 특정 기능을 수행하는 web application, django project는 웹사이트를 위한 app과 configuration, setting들을 모아놓은 것.
+    APP VS PROJECT
 
-⇒ 하나의 project에는 여러개의 app이 들어갈 수 있다.
+    ⇒ django app은 특정 기능을 수행하는 web application, django project는 웹사이트를 위한 app과 configuration, setting들을 모아놓은 것.
 
-⇒ 예를 들면 naver는 project 블로그, 이메일 등은 naver project를 구성하는 app 
+    ⇒ 하나의 project에는 여러개의 app이 들어갈 수 있다.
 
-⇒ project에 app을 추가하고 싶으면 `python manage.py startapp [app-name]` 명령어를 이용해서 만들면 됨.
+    ⇒ 예를 들면 naver는 project 블로그, 이메일 등은 naver project를 구성하는 app 
 
-    </aside>
+    ⇒ project에 app을 추가하고 싶으면 `python manage.py startapp [app-name]` 명령어를 이용해서 만들면 됨.
+
+    
 
 
 
