@@ -25,8 +25,8 @@ Django Tutorial을 따라하면서 모르는게 생겼을때 해당 페이지 �
     - mysite/urls.py ⇒ Django projcet에서 쓰이는 url들을 모아놓은 것. “Table of contents of Django-powered”
         - `include()` 를 이용해서 project에서 사용하는 app의 urls.py로 제어를 넘길 수 있다.
 
----
-<aside>
+<div>
+    <aside>
 💡
 
 APP VS PROJECT
@@ -39,8 +39,9 @@ APP VS PROJECT
 
 ⇒ project에 app을 추가하고 싶으면 `python manage.py startapp [app-name]` 명령어를 이용해서 만들면 됨.
 
-</aside>
----
+    </aside>
+</div>
+
 
 # 2. Django의 기본구조 (MVT)
 
