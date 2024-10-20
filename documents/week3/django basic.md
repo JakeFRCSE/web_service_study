@@ -269,6 +269,8 @@ COMMIT;
 
 <br/><br/><br/><br/>
 
+#### path()와 include()
+
 `path()`
 
 - django.urls의 메서드
