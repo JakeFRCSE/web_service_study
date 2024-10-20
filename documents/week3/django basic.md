@@ -274,13 +274,12 @@ COMMIT;
 `path()`
 
 - django.urls의 메서드
-- The [**`path()`**](https://docs.djangoproject.com/en/5.1/ref/urls/#django.urls.path) function expects at least two arguments: **`route`** and **`view`**
 - `path()` 메서드는 2개의 parameter를 필수로 요구한다. `path(route, view)`
     - route : url패턴을 가진 문자열
     - view : HttpRequest 객체를 첫번째 인수로 하고, 경로로 부터 캡쳐된 값을 키워드 인수로 하여 특정한 view 함수를 호출
     - 이때 angle bracket을 사용해서 path(”<int: question_id>”) 이런식으로 만들면 django는 이부분을 캡쳐해서 키워드 인수로 보낸다.
 
-    `include()`
+`include()`
 
 - django.urls의 메서드
 - 다른 app의 URLconfs를 참조할 수 있게 한다. 즉, 다른 app의 urls.py의 urlpatterns를 참조할 수 있게한다.
