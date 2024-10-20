@@ -170,10 +170,10 @@
 - 위는 좀전에 삭제한 0002번 migration파일의 내용이다.
 <br/>
 >
-    0002번 migration파일을 삭제하고자 한다면 꼭 0001파일을 먼저 적용 한 후 삭제해야 한다.
+    <b>0002번 migration파일을 삭제하고자 한다면 꼭 0001파일을 먼저 적용 한 후 삭제해야 한다.</b>
     
     
-    <br/><br/><br/><br/>
+<br/><br/><br/><br/>
 
 ### 3. `python manage.py sqlmigrate [app-name] [migration-name]`
 
