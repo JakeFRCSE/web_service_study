@@ -42,15 +42,15 @@
 
 <aside>
 😀
-> 
-	<b>들어가기전에</b>
+ 
+**들어가기전에**
 
-	- **AXIOS 라이브러리 사용 - http통신 라이브러리.**
-    	- `npm install axios` 를 이용해서 axios라이브러리 다운로드.
+- **AXIOS 라이브러리 사용 - http통신 라이브러리.**
+	- `npm install axios` 를 이용해서 axios라이브러리 다운로드.
     	- `import axios from 'axios'`  : axios라이브러리 import
 
-	- **django**
-    	- opasgiref==3.8.1
+- **django**
+	- opasgiref==3.8.1
     	- Django==5.1
     	- djangorestframework==3.15.2
     	- sqlparse==0.5.1
@@ -58,8 +58,8 @@
         	- project 이름 : mysite
         	- api요청을 받을 app이름 : polls
 
-	- **react**
-    	- axios@1.7.7
+- **react**
+  	- axios@1.7.7
     	- next@14.2.7
     	- react-dom@18.3.1
     	- react@18.3.1
