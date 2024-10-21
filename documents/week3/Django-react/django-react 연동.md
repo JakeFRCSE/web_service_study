@@ -43,7 +43,7 @@
 <aside>
 😀
 > 
-	**들어가기전에**
+	<b>들어가기전에</b>
 
 	- **AXIOS 라이브러리 사용 - http통신 라이브러리.**
     	- `npm install axios` 를 이용해서 axios라이브러리 다운로드.
