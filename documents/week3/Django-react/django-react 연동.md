@@ -42,28 +42,28 @@
 
 <aside>
 😀
+> 
+	**들어가기전에**
 
-**들어가기전에**
+	- **AXIOS 라이브러리 사용 - http통신 라이브러리.**
+    	- `npm install axios` 를 이용해서 axios라이브러리 다운로드.
+    	- `import axios from 'axios'`  : axios라이브러리 import
 
-- **AXIOS 라이브러리 사용 - http통신 라이브러리.**
-    - `npm install axios` 를 이용해서 axios라이브러리 다운로드.
-    - `import axios from 'axios'`  : axios라이브러리 import
+	- **django**
+    	- opasgiref==3.8.1
+    	- Django==5.1
+    	- djangorestframework==3.15.2
+    	- sqlparse==0.5.1
+        	- tutorial step3 - render()까지 진행한 django 프로젝트를 이용
+        	- project 이름 : mysite
+        	- api요청을 받을 app이름 : polls
 
-- **django**
-    - opasgiref==3.8.1
-    - Django==5.1
-    - djangorestframework==3.15.2
-    - sqlparse==0.5.1
-        - tutorial step3 - render()까지 진행한 django 프로젝트를 이용
-        - project 이름 : mysite
-        - api요청을 받을 app이름 : polls
+	- **react**
+    	- axios@1.7.7
+    	- next@14.2.7
+    	- react-dom@18.3.1
+    	- react@18.3.1
 
-- **react**
-    - axios@1.7.7
-    - next@14.2.7
-    - react-dom@18.3.1
-    - react@18.3.1
-        - 아무 페이지나 만들기
 </aside>
 
 ## 1. [Django-settings.py](http://Django-settings.py) CORS 설정
