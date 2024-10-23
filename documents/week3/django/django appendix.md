@@ -3,7 +3,8 @@
 <aside>
 💡
 
-본 페이지의 예제는 django tutorial step2 API 부분이며, 처음 공부하는 입장이라면 1번부터 차근차근 따라가면서 django에서 제공하는 model API에 대해서 알아가보길 바란다. 
+- 본 페이지의 예제는 django tutorial step2 API 부분이며, 처음 공부하는 입장이라면 1번부터 차근차근 따라가면서 django에서 제공하는 model API에 대해서 알아가보길 바란다.
+- `python manage.py shelld`을 통해서 python shell을 실행시키고 거따가 코드 작성
 
 </aside>
 
