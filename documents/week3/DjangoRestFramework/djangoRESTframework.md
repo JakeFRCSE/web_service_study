@@ -12,9 +12,9 @@
     - 예를들어 **모든CRUD**를 **POST로** 처리한 API나, URI규칙을 올바르게 지키지 못한 API는 RESTful하다 말하지 못한다.
 
 <aside>
-😀
 
-Django VS DRF
+
+**Django VS DRF**
 
 **django** 
 
