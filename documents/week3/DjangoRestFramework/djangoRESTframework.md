@@ -180,6 +180,7 @@ def drf_api(request):
 `@api_view(['GET', 'POST'])`
 
 ## POST api view 구현
+- 아까 `@api_view` decorator를 이용해서 만든 drf_api안에다가 구현하면 된다.
 
 ```python
 if request.method == 'POST':
