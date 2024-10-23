@@ -96,7 +96,7 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 �
 |:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
 |<img width="100px" alt="이동훈" src="https://avatars.githubusercontent.com/u/67902252?s=60&v=4/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="조현성" src="https://avatars.githubusercontent.com/u/138447029?v=4" /> | <img width="100px" alt="안소희" src="https://avatars.githubusercontent.com/u/127065983?s=60&v=4" /> |<img width="100px" alt="박준혁" src="https://avatars.githubusercontent.com/u/162955476?s=60&v=4" /> | <img width="100px" alt="박상훈" src="https://avatars.githubusercontent.com/u/152972679?s=60&v=4" />| <img width="100px" alt="곽도연" src="https://avatars.githubusercontent.com/u/165464282?s=60&v=4" /> |
 | therqq13@pusan.ac.kr | sungsam3312@pusan.ac.kr | soheean1370@pusan.ac.kr | eppi001004@gmail.com | sanghoon556@pusan.ac.kr |gdy0210@pusan.ac.kr |
-| 총괄 <br/> 인프라 구축 | Pytorch 개발 | Pytorch 개발 | 백엔드 개발 | 백엔드 개발 || 프론트엔드 개발 |
+| 총괄 <br/> 인프라 구축 | Pytorch 개발 | Pytorch 개발 | 백엔드 개발 | 백엔드 개발 | 프론트엔드 개발 |
 
 ### 7. 해커톤 참여 후기
 > 팀원 별 해커톤 참여 후기를 작성하세요.
