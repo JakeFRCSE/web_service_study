@@ -17,10 +17,12 @@
 
 **CRUD**
 
-- Create : 데이터 생성(POST)
-- Read : 데이터 조회(GET)
-- Update : 데이터 수정(PUT, PATCH)
-- Delete : 데이터 삭제(DELETE)
+- `Create` : 데이터 생성(POST)
+- `Read` : 데이터 조회(GET)
+- `Update` : 데이터 수정(PUT, PATCH)
+    - `PUT`  : 문서 전체의 완전한 교체
+    - `PATCH` : 문서의 일부분만 교체
+- `Delete` : 데이터 삭제(DELETE)
 </aside>
 
 - API : Application Programming Interface의 약자
