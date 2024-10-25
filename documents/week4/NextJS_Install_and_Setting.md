@@ -3,9 +3,9 @@
 ## 1. Node.js 설치
 [Node.js 홈페이지](https://nodejs.org/en)에서 LTS 버전을 다운로드 한다.
 <br><br>
-![alt text](./img/NextJS_Install_and_Setting_01.png)
+![Node.js 설치 페이지 화면](./img/NextJS_Install_and_Setting_01.png)
 <br><br>
-프로젝트는 Node.js **v20.18.0**으로 진행하였음.
+프로젝트는 Node.js **v20.18.0**으로 진행하였다.
 
 ## 2. npx create-next-app@latest
 [Next.js Getting Started](https://nextjs.org/docs/getting-started/installation)
@@ -13,7 +13,7 @@
 Next.js를 빠르게 구축할 수 있는 라이브러리가 존재한다. 해당 명령어를 사용하여 빠르게 구축해보자.
 ```powershell
 # 2024-10-25 기준 최신버전 = Next.js v15.0.1
-PS C:\Users\user\Desktop\Group-11> npx create-next-app@latest ai-web-front
+PS C:\Users\user\Desktop\Group-11> npx create-next-app@latest ai_web_front
 ```
 
 ```powershell
@@ -40,7 +40,7 @@ PS C:\Users\user\Desktop\Group-11> npx create-next-app@latest ai-web-front
 # 기본 옵션이 `@`이며, 기본 값을 사용할 것이므로 no
 √ Would you like to customize the import alias (@/* by default)? ... √No / Yes
 
-Creating a new Next.js app in C:\Users\user\Desktop\Group-11\ai-web-front.
+Creating a new Next.js app in C:\Users\user\Desktop\Group-11\ai_web_front.
 
 Using npm.
 
@@ -59,7 +59,26 @@ added 28 packages, and audited 29 packages in 30s
   run `npm fund` for details
 
 found 0 vulnerabilities
-Success! Created ai-web-front at C:\Users\user\Desktop\Group-11\ai-web-front
+Success! Created ai-web-front at C:\Users\user\Desktop\Group-11\ai_web_front
 ```
+
+## 3. Next.js 실행해보기
+생성한 폴더로 접근하여 node.js 명령어를 통해 next.js를 실행해보자
+```powershell
+PS C:\Users\user\Desktop\Group-11\ai_web_front> npm run dev
+
+> ai_web_front@0.1.0 dev
+> next dev --turbopack
+
+  ▲ Next.js 15.0.1 (Turbopack)
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 8s
+```
+
+이후 `http://localhost:3000`으로 접근하면 아래 페이지가 나타난다.
+
+![Next.js 메인페이지](./img/NextJS_Install_and_Setting_02.png)
 
 여기까지 진행했다면 환경설정 완료 ☺️
