@@ -7,18 +7,22 @@
 - `SAMPLE_README.md`가 단순한 형태의 예제이니 참고하세요.
 ### 1. 프로젝트 소개
 #### 1.1. 개발배경 및 필요성
-AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 대회에서 좋은 모델을 만드는 것에 그치지 않고 이를 직접 배포해보는 프로젝트를 진행하고자 해당 프로젝트가 시작되었습니다.
+AID(정보컴퓨터공학부 AI동아리) 내에서 `맥도날드 리뷰 데이터 별점 예측` 대회를 개최하였습니다. 맥도날드 매장에 대한 리뷰(영문) 데이터를 통해 학습된 모델이 리뷰 텍스트를 입력받으면 해당 리뷰의 별점은 몇점인지 예측하는 모델이 개발되었고, 개발된 모델을 시연해볼 수 있도록 웹서비스로 배포하는 것이 목적입니다. 해당 모델이 대회에서만 1회용으로 제작되는 것에 그치는 것이 아닌 누구나 시연해 볼 수 있는 환경이 필요하여 시작된 토이 프로젝트입니다.
 
 #### 1.2. 개발 목표 및 주요 내용
-음식점의 후기를 자연어로 입력받으면 해당 후기를 남긴 유저의 별점을 예측하는 프로그램을 배포하는 일련의 과정을 스터디하고 경험하는 것을 목표로 하고 있습니다.
+맥도날드 매장의 후기를 영어로 입력받으면 해당 후기를 남긴 유저의 별점을 예측하는 프로그램을 배포하는 일련의 과정을 스터디하고 경험하는 것을 목표로 하고 있습니다. 이번 토이 프로젝트를 통해 웹과 Pytorch 모델이 어떻게 결합될 수 있는지 스터디 해보고 차후에 AI 모델을 학습하고 python 환경에서 이용하는 것에서 벗어나 누구나 쉽게 모델을 이용해볼 수 있는 환경을 제작하는 능력을 갖추는 것이 목표입니다.
 
 #### 1.3. 세부내용
 - 프론트엔드: Next.JS를 활용한 프롬프트 시스템
-- 백엔드: Django + Pytorch로 AI 모델 API화, Django ORM <-> PostgreSQL
+- 백엔드: Django + Pytorch로 AI 모델 API화, Django <-DB-> SQLite
 - AI: AI모델 튜닝 및 인스턴스화
-  - 제한사항: AI 모델을 위해 메모리, CPU 등의 하드웨어 성능이 뒷받침 되어야 할 것으로 보임. -> AWS 스펙 조절 및 프롬프트 호출 횟수 제한
+  - AI 모델을 위해 메모리, CPU 등의 하드웨어 성능이 뒷받침 되어야 할 것으로 보임.
+  - Pytorch 모델을 Django 앱과 비동기적으로 동작하도록 설계하는 것이 중요함.
 
 #### 1.4. 주차 별 계획 및 진행사항
+
+(2024-10-26 기준)
+[![TimeLine](./documents/README_img/timelne.png)](https://aeolian-arch-69e.notion.site/12b7102ef97780f287b4e18be2041cc1?v=3907530821de471d91c949cfe7f19a53)
 
 - **F**: Front-End
 - **B**: Back-End
@@ -28,9 +32,9 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 �
 |:-------:|:-------:|:-------:|:-------:|
 | 1주차 | React | Web 기초 스터디 **F** <br> React 스터디 **F** | 1. [HTML, CSS, JS](./documents/week1/Web%20Basic.md) <br> 2. [React](https://www.notion.so/React-5d06778aa9b541d8ba95270fd4db5591) |
 | 2주차 | HTTP, Figma | HTTP 기반 API 스터디 **F,B,A** <br> Figma로 Wireframe 설계 **F** | 1. [HTTP 기반 API](https://www.notion.so/HTTP-API-64249f434f934fb3a7da7c9062b9fad3) <br> 2. [Figma Wireframe](./documents/week2/Figma%20Wireframe.md) |
-| 3주차 | Django, REST API | Django 기초 스터디 **B,A** <br> Django REST Framework 스터디 **B,A** | 1. [Django](https://github.com/2024-PNU-SW-StudyGroup/Group-11/tree/main/documents/week3/django) <br> 2-1. [Django ↔ React](https://github.com/2024-PNU-SW-StudyGroup/Group-11/tree/main/documents/week3/Django-react)<br> 2-2. [Django REST API](https://github.com/2024-PNU-SW-StudyGroup/Group-11/tree/main/documents/week3/DjangoRestFramework) <br> **문서 정리 필요** |
-| 4주차 | Next.js, REST API | Next.js로 UI 구축 -1- **F** <br> DB (SQLite) 스터디 **B** | - |
-| 5주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -1- **A** <br> Next.js로 UI 구축 -2- **F** <br> API 명세서 작성 및 DB 구축 **B,A** | 1. [Pytorch Basic](./documents/week4/Pytorch%20Basic.md) |
+| 3주차 | Django, REST API | Django 기초 스터디 **B,A** <br> Django REST Framework 스터디 **B,A** | 1. [Django](./documents/week3/django/django%20basic.md) <br> 2-1. [Django ↔ React](./documents/week3/django-react%20연동/django-react%20연동.md)<br> 2-2. [django-rest-framework](./documents/week3/DjangoRestFramework/djangoRESTframework.md) |
+| 4주차 | Pytorch <br> Next.js <br> DB | Pytorch 기초 스터디 **A** <br> Next.js로 UI 구축 -1- **F** <br> DB (SQLite) 스터디 **B** | 1. [Pytorch Basic](./documents/week4/Pytorch%20Basic.md) <br> 2. [Next.js UI](./documents/week4/NextJS_Create_the_UI.md)<br> - |
+| 5주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -1- **A** <br> Next.js로 UI 구축 -2- **F** <br> API 명세서 작성 및 DB 구축 **B,A** | - |
 | 6주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -2- **A** <br> Next.js로 UX 구축 -1- **F** <br> REST API 구현 -1- **B** | - |
 | 7주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 API Serving **A** <br> Next.js로 UX 구축 -2- **F** <br> REST API 구현 -2- **B** | - |
 | 8주차 | Pytorch <br> Next.js <br> Django, REST API | 통합 테스트 및 디버깅 -1- **F,B,A** | - |
@@ -43,13 +47,28 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 �
 > 시스템 구성도(infra, front, back등의 node 간의 관계)의 사진을 삽입하세요.
 
 #### 2.1. 사용 기술
-> 스택 별(backend, frontend, designer등) 사용한 기술 및 버전을 작성하세요.
-> 
-> Frontend:
-> 
-> Backend: Django==5.1, djangorestframework==3.15.2, sqlparse==0.5.1
-> 
-> ex) React.Js - React14, Node.js - v20.0.2
+
+- Frontend
+  ```text
+    Node.js v20.18.0
+
+    "dependencies": {
+      "react": "19.0.0-rc-69d4b800-20241021",
+      "react-dom": "19.0.0-rc-69d4b800-20241021",
+      "next": "15.0.1"
+    }
+  ```
+ 
+- Backend
+  ```text
+    Python 3.11.4
+
+    pip list:
+    asgiref==3.8.1
+    Django==5.1
+    djangorestframework==3.15.2
+    sqlparse==0.5.1
+  ```
 
 ### 3. 개발결과
 #### 3.1. 전체시스템 흐름도
