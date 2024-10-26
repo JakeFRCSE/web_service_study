@@ -22,7 +22,7 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 `맥도날드 리뷰 데이�
 #### 1.4. 주차 별 계획 및 진행사항
 
 (2024-10-26 기준)
-[![TimeLine](./documents/README_img/timelne.png)](https://aeolian-arch-69e.notion.site/12b7102ef97780f287b4e18be2041cc1?v=3907530821de471d91c949cfe7f19a53)
+[![TimeLine](./documents/README_img/timeline.png)](https://aeolian-arch-69e.notion.site/12b7102ef97780f287b4e18be2041cc1?v=3907530821de471d91c949cfe7f19a53)
 
 - **F**: Front-End
 - **B**: Back-End
@@ -34,7 +34,7 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 `맥도날드 리뷰 데이�
 | 2주차 | HTTP, Figma | HTTP 기반 API 스터디 **F,B,A** <br> Figma로 Wireframe 설계 **F** | 1. [HTTP 기반 API](https://www.notion.so/HTTP-API-64249f434f934fb3a7da7c9062b9fad3) <br> 2. [Figma Wireframe](./documents/week2/Figma%20Wireframe.md) |
 | 3주차 | Django, REST API | Django 기초 스터디 **B,A** <br> Django REST Framework 스터디 **B,A** | 1. [Django](./documents/week3/django/django%20basic.md) <br> 2-1. [Django ↔ React](./documents/week3/django-react%20연동/django-react%20연동.md)<br> 2-2. [django-rest-framework](./documents/week3/DjangoRestFramework/djangoRESTframework.md) |
 | 4주차 | Pytorch <br> Next.js <br> DB | Pytorch 기초 스터디 **A** <br> Next.js로 UI 구축 -1- **F** <br> DB (SQLite) 스터디 **B** | 1. [Pytorch Basic](./documents/week4/Pytorch%20Basic.md) <br> 2. [Next.js UI](./documents/week4/NextJS_Create_the_UI.md)<br> - |
-| **5주차** | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -1- **A** <br> Next.js로 UI 구축 -2- **F** <br> API 명세서 작성 및 DB 구축 **B,A** | - <br> - <br> 3-0. [Django 환경 세팅](./documents/week4/Django_Install_and_Setting.md) |
+| **5주차** | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -1- **A** <br> Next.js로 UI 구축 -2- **F** <br> API 명세서 작성 및 DB 구축 **B,A** | - <br> - <br> 3-0. [Django 환경 세팅](./documents/week5/Django_Install_and_Setting.md) |
 | 6주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -2- **A** <br> Next.js로 UX 구축 -1- **F** <br> REST API 구현 -1- **B** | - |
 | 7주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 API Serving **A** <br> Next.js로 UX 구축 -2- **F** <br> REST API 구현 -2- **B** | - |
 | 8주차 | Pytorch <br> Next.js <br> Django, REST API | 통합 테스트 및 디버깅 -1- **F,B,A** | - |
