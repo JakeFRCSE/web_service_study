@@ -28,7 +28,7 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 �
 |:-------:|:-------:|:-------:|:-------:|
 | 1주차 | React | Web 기초 스터디 **F** <br> React 스터디 **F** | 1. [HTML, CSS, JS](./documents/week1/Web%20Basic.md) <br> 2. [React](https://www.notion.so/React-5d06778aa9b541d8ba95270fd4db5591) |
 | 2주차 | HTTP, Figma | HTTP 기반 API 스터디 **F,B,A** <br> Figma로 Wireframe 설계 **F** | 1. [HTTP 기반 API](https://www.notion.so/HTTP-API-64249f434f934fb3a7da7c9062b9fad3) <br> 2. [Figma Wireframe](./documents/week2/Figma%20Wireframe.md) |
-| 3주차 | Django, REST API | Django 기초 스터디 **B,A** <br> Django REST Framework 스터디 **B,A** | 1. [Django](https://www.notion.so/Django-1097102ef977804a9c81df71899c85be) <br> 2-1. [Django ↔ React](https://www.notion.so/Django-React-17cc68e1006c41e682eef5e75048f194) <br> 2-2. [Django REST API](https://www.notion.so/1197102ef97780b3a54bc72f4f031d11) <br> **문서 정리 필요** |
+| 3주차 | Django, REST API | Django 기초 스터디 **B,A** <br> Django REST Framework 스터디 **B,A** | 1. [Django](https://github.com/2024-PNU-SW-StudyGroup/Group-11/tree/main/documents/week3/django) <br> 2-1. [Django ↔ React](https://github.com/2024-PNU-SW-StudyGroup/Group-11/tree/main/documents/week3/Django-react)<br> 2-2. [Django REST API](https://github.com/2024-PNU-SW-StudyGroup/Group-11/tree/main/documents/week3/DjangoRestFramework) <br> **문서 정리 필요** |
 | 4주차 | Next.js, REST API | Next.js로 UI 구축 -1- **F** <br> DB (SQLite) 스터디 **B** | - |
 | 5주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -1- **A** <br> Next.js로 UI 구축 -2- **F** <br> API 명세서 작성 및 DB 구축 **B,A** | 1. [Pytorch Basic](./documents/week4/Pytorch%20Basic.md) |
 | 6주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -2- **A** <br> Next.js로 UX 구축 -1- **F** <br> REST API 구현 -1- **B** | - |
@@ -92,11 +92,11 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 자체적으로 진행한 �
 ### 6. 팀 소개
 > 팀원 소개 & 구성원 별 역할 분담 & 간단한 연락처를 작성하세요.
 #### 🍱 배고픈사람들
-| 이동훈 | 조현성 | 안소희 | 박준혁 | 곽도연 |
-|:-------:|:-------:|:-------:|:-------:|:-------:|
-|<img width="100px" alt="이동훈" src="https://avatars.githubusercontent.com/u/67902252?s=60&v=4/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="조현성" src="https://avatars.githubusercontent.com/u/138447029?v=4" /> | <img width="100px" alt="안소희" src="https://avatars.githubusercontent.com/u/127065983?s=60&v=4" /> |<img width="100px" alt="박준혁" src="https://avatars.githubusercontent.com/u/162955476?s=60&v=4" /> | <img width="100px" alt="곽도연" src="https://avatars.githubusercontent.com/u/165464282?s=60&v=4" /> |
-| therqq13@pusan.ac.kr | sungsam3312@pusan.ac.kr | soheean1370@pusan.ac.kr | eppi001004@gmail.com | gdy0210@pusan.ac.kr |
-| 총괄 <br/> 인프라 구축 | Pytorch 개발 | Pytorch 개발 | 백엔드 개발 | 프론트엔드 개발 |
+| 이동훈 | 조현성 | 안소희 | 박준혁 | 박상훈 |곽도연 |
+|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|<img width="100px" alt="이동훈" src="https://avatars.githubusercontent.com/u/67902252?s=60&v=4/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="조현성" src="https://avatars.githubusercontent.com/u/138447029?v=4" /> | <img width="100px" alt="안소희" src="https://avatars.githubusercontent.com/u/127065983?s=60&v=4" /> |<img width="100px" alt="박준혁" src="https://avatars.githubusercontent.com/u/162955476?s=60&v=4" /> | <img width="100px" alt="박상훈" src="https://avatars.githubusercontent.com/u/152972679?s=60&v=4" />| <img width="100px" alt="곽도연" src="https://avatars.githubusercontent.com/u/165464282?s=60&v=4" /> |
+| therqq13@pusan.ac.kr | sungsam3312@pusan.ac.kr | soheean1370@pusan.ac.kr | eppi001004@gmail.com | sanghoon556@pusan.ac.kr |gdy0210@pusan.ac.kr |
+| 총괄 <br/> 인프라 구축 | Pytorch 개발 | Pytorch 개발 | 백엔드 개발 | 백엔드 개발 | 프론트엔드 개발 |
 
 ### 7. 해커톤 참여 후기
 > 팀원 별 해커톤 참여 후기를 작성하세요.

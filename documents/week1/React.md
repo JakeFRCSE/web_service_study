@@ -143,7 +143,7 @@ clean up 함수를 사용하는 방법은 간단하다.
   }, []); // useEffect 두 번째 인자에 []을 추가하기
 ```
 
-위에 주석에서도 설명을 했지만, **useEffect 안에서 return**을 해주면 실 된다.
+위에 주석에서도 설명을 했지만, **useEffect 안에서 return**을 해주면 실행 된다.
 
 ## ※ State Life Cycle
 
