@@ -6,6 +6,7 @@
 
 # pycache
 *.pyc
+__pycache__/
 
 # metadata in macOS
 .DS_Store
