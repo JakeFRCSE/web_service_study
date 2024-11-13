@@ -4,8 +4,9 @@
   width: 420px;
   height: 51.556px;
   padding: 8px 24px;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
+  gap: 10px;
 }
 
 .navItem1 {
@@ -13,7 +14,7 @@
   font-family: "Baloo Bhai";
   font-size: 18px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
 }
 
@@ -24,6 +25,7 @@
   font-style: normal;
   font-weight: 350;
   line-height: normal;
+  margin-left: auto;
 }
 
 .semi_content {
@@ -93,4 +95,30 @@
   background: var(--AID-Skyblue, #0EA5E9);
   margin-right: 12;
   border: none;
+}
+
+.reviewContents {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: Inter;
+  font-style: normal;
+
+  color: #000000;
+  line-height: normal;
+  margin: 8px 0;
+  padding: 15px; 
+  border-radius: 16px;
+  background: #D9D9D9; 
+  position: relative; 
+  max-width: 280px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  word-break: break-all;  /* 말풍선 너비를 넘는 단어도 줄바꿈 */
+  white-space: normal;    /* 텍스트 줄바꿈을 허용 */
+}
+
+.chatRow {
+  display: flex;     
+  align-items: center;    
+  gap: 8px;              
 }
