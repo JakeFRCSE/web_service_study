@@ -54,7 +54,14 @@ const LandingPage = () => {
             <div key={review.id} className={styles.review}>
 			 <div className={styles.chatRow}>
     		  <p className={styles.reviewContents}>{review.reviewContents}</p>
-              <p>예측 별점: {review.modelRatings} / 5</p>
+			  <div className={styles.starRating}>
+      			{Array.from({ length: 5 }, (_, i) => (
+        		<img
+          		key={i}
+          		src={i < review.modelRatings ? '/yellow_star.svg' : '/empty_star.svg'}
+       			 />
+      			))}
+    		  </div>
 			 </div>
             </div>
           ))}
@@ -62,8 +69,10 @@ const LandingPage = () => {
 
 
       <div className={styles.inputContainer}> 
-        <input className={styles.input} type="text" />
-        <button className={styles.Upload}></button>
+        <textarea className={styles.input} type="text" ></textarea>
+        <button className={styles.Upload}>
+		 <img src="/send.svg" width = "14" height = "12" />
+		</button>
         </div>
       </div>
     </div>
