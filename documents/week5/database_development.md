@@ -12,7 +12,7 @@ Week4 에서 djagno app과 postgreSQL 데이터 베이스를 연결해 놨다.
 
 `python manage.py makemigrations [app-name]` 을 이용해서 migration파일을 Django app내부에 생성 
 
-![migrations](./dbd_img/migration.png)
+![migrations](./dbd_img/migration_file.png)
 
 ## 3. `migrate`
 
