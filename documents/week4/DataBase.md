@@ -159,7 +159,19 @@ pgadmin이라는 postgreSQL GUI Tool이 있는데 우리는 이 도구를 이용
 
 ![create postgreSQL database](./img_db/1.png)
 
-2. django [settings.py](http://settings.py) 설정
+<br/>
+
+2. django project에 psycopg2 설치
+
+`pip install psycopg2`  명령어를 통해서 psycopg2를 설치한다. 당연히 가상환경을 킨 상태에서 다운 받아야 한다. 
+
+psycopg2는 PostgreSQL 데이터베이스를 Python에서 사용하기 위한 어댑터 이다.
+
+이 모듈은 PostgreSQL 데이터베이스와의 연결을 설정하고, SQL 쿼리를 실행하며, 데이터베이스 작업을 수행하는 데 필요한 다양한 기능을 제공한다.
+
+<br/>
+
+3. django settings.py 설정
 
 ![setting django](./img_db/2.png)
     
