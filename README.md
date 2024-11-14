@@ -36,7 +36,7 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 `맥도날드 리뷰 데이�
 | 4주차 | Pytorch <br> Next.js <br> DB | Pytorch 기초 스터디 **A** <br> Next.js로 UI 구축 -1- **F** <br> DB (PostgreSQL) 스터디 **B** | 1. [Pytorch Basic](./documents/week4/Pytorch%20Basic.md) <br> 2. [Next.js UI](./documents/week4/NextJS_Create_the_UI.md)<br>  3. [Databse](./documents/week4/DataBase.md) |
 | **5주차** | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -1- **A** <br> Next.js로 UI 구축 -2- **F** <br> API 명세서 작성 및 DB 구축 **B,A** | - <br> - <br> 3-0. [Django 환경 세팅](./documents/week5/Django_Install_and_Setting.md) |
 | 6주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -2- **A** <br> Next.js로 UX 구축 -1- **F** <br> REST API 구현 -1- **B** | - <br> - <br> 3. [REST API 구현 -1-](./documents/week6/RESTAPI_구현-1-.md) |
-| 7주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 API Serving **A** <br> Next.js로 UX 구축 -2- **F** <br> REST API 구현 -2- **B** | - |
+| 7주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 API Serving **A** <br> Next.js로 UX 구축 -2- **F** <br> REST API 구현 -2- **B** | - <br> - <br> 3. [REST API 구현 -2-](./documents/week7/RESTAPI_구현-2-.md) |
 | 8주차 | Pytorch <br> Next.js <br> Django, REST API | 통합 테스트 및 디버깅 -1- **F,B,A** | - |
 | 9주차 | Pytorch <br> Next.js <br> Django, REST API | 통합 테스트 및 디버깅 -2- **F,B,A** | - |
 | 10주차 | Docker | Docker로 인프라 구축하기 **B** | - |
