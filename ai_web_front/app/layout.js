@@ -1,15 +1,13 @@
-import localFont from "next/font/local";
 import "./globals.css";
+import { Baloo_Bhai_2, Noto_Sans_KR } from 'next/font/google';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const notoSansKr = Noto_Sans_KR({
+  subsets: ['latin'],
+  variable: '--NotoSans'
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const balooBhai = Baloo_Bhai_2({
+  subsets: ['latin'],
+  variable: '--Baloo',
 });
 
 export const metadata = {
@@ -20,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${notoSansKr.variable} ${balooBhai.variable}`}>
         {children}
       </body>
     </html>

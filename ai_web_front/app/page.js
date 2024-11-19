@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import styles from "./page.module.css";
+import React, { useEffect, useState } from 'react';
+import styles from './page.module.css';
+import Navi from '@/components/Navi';
 
 const LandingPage = () => {
   const initialData = [
@@ -68,6 +69,7 @@ const LandingPage = () => {
 
   return (
     <div className={styles.Landing}>
+			<Navi/>
       <div className={styles.Container}>
         <div className={styles.navigationBar}>
           <img src="/aid_logo.png" width="24" height="35" />
