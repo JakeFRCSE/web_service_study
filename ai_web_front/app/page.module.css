@@ -54,8 +54,7 @@
   flex-direction: column;
   gap: 12px;
   align-self: stretch;
-  width: 406px;
-  height: 770px;
+  width: 100%;
   overflow-y: auto; /* 스크롤 추가 */
   padding: 12px;
 }
@@ -120,6 +119,7 @@
   align-items: center;
   gap: 8px;
   align-self: stretch;
+  margin-bottom: 8px;
 }
 
 .input {
@@ -133,7 +133,6 @@
   border-radius: 8px;
   border: 1px solid #bebebe;
   margin-left: 8px;
-  margin-bottom: 12px;
 }
 
 .Upload {
@@ -148,7 +147,6 @@
   border-radius: 8px;
   background: var(--AID-Skyblue, #0ea5e9);
   margin-right: 12px;
-  margin-bottom: 12px;
   border: none;
 }
 
@@ -161,7 +159,7 @@
   gap: 10px;
   align-self: stretch;
   position: absolute;
-  top: calc(100% - 60px); /* textarea 위에 배치 */
+  top: calc(100% - 20px); /* textarea 위에 배치 */
   left: 10px;
   right: 12px;
   background: var(--AID-GREEN, #16a34a);
@@ -187,4 +185,13 @@
 
 .Container {
   margin-top: 4rem;
+}
+
+
+.rectangle {
+  position: absolute;
+  width: 100%;
+  height: 100px; 
+  background: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+  z-index: 1; /* 요소를 겹치기 위해 z-index 설정 */
 }

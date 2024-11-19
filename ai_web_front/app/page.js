@@ -77,6 +77,7 @@ const LandingPage = () => {
         <div className={styles.semi_content_2}>
           AI가 당신이 남길 별점을 예측해드립니다.
         </div>
+		<div className={styles.rectangle}></div>
 
         <div className={styles.all_chatting_box}>
           {/* 기존 리뷰 */}
