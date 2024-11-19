@@ -71,11 +71,6 @@ const LandingPage = () => {
     <div className={styles.Landing}>
 			<Navi/>
       <div className={styles.Container}>
-        <div className={styles.navigationBar}>
-          <img src="/aid_logo.png" width="24" height="35" />
-          <div className={styles.navItem1}>AI Developer</div>
-          <div className={styles.navItem2}>맥도날드 리뷰별점 예측모델</div>
-        </div>
         <div className={styles.semi_content}>
           가장 최근에 다녀왔던 맥도날드의 리뷰를 영어로 남겨보세요!
         </div>
