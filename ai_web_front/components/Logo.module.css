@@ -1,0 +1,19 @@
+.Logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  font-family: var(--Baloo);
+  font-size: large;
+  font-weight: 900;
+}
+
+.LogoImage {
+  width: 1.5rem;
+}
+
+/* @media screen and (min-width: 768px) {
+  .LogoImage {
+    width: 30;
+  }
+} */
