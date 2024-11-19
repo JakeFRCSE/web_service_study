@@ -6,7 +6,7 @@
 django ORM(Object Relational Mapper)는 django application이 DB와 상호작용하는 방법이다. 
 django ORM은 SQL명령문이 아닌 python 코드로 DB를 다룰 수 있게 한다. 
 
-이에 대한 자세한 내용을 알고 싶으면 → [django](../week3/django/django%20basico.md)
+이에 대한 자세한 내용을 알고 싶으면 → [django](../week3/django/django%20basic.md)
 
 django ORM과 model에 관한 설명은 Week3-django에서 해놨으므로 django에서 제공하는 model API를 이용해서 CRUD를 어떻게 수행하는지 알아보자 
 
