@@ -1,0 +1,36 @@
+.NavigationBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 0.5rem 0;
+  z-index: 1;
+}
+
+.Inner {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.Right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+
+  font-family: var(--NotoSans);
+  font-weight: light;
+  color: #828282;
+  font-size: 12px;
+}
+
+.Menu {
+  margin-left: 2rem;
+}

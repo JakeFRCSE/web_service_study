@@ -1,0 +1,41 @@
+## Request
+
+### Query Parameter
+
+- page, int, 1 이상
+- size, int, 1 이상
+
+## Response
+
+### `200`
+
+```json
+{
+	"reviews": [
+			{
+				"id": 423, // int 1~
+				"reviewContents": "dskafnsdklafnksdalf", // string, 1~?, 길이 확인 필요
+				"modelRatings": 3 // int, 1~5 
+			},
+			{
+				"id": 423, // int 1~
+				"reviewContents": "dskafnsdklafnksdalf", // string, 1~?, 길이 확인 필요
+				"modelRatings": 3 // int, 1~5 
+			},
+			{
+				"id": 423, // int 1~
+				"reviewContents": "dskafnsdklafnksdalf", // string, 1~?, 길이 확인 필요
+				"modelRatings": 3 // int, 1~5 
+			},
+			{
+				"id": 423, // int 1~
+				"reviewContents": "dskafnsdklafnksdalf", // string, 1~?, 길이 확인 필요
+				"modelRatings": 3 // int, 1~5 
+			},
+			...
+		],
+	"pageinfo": {
+		"maxPage": 5 // int
+	}
+}
+```
