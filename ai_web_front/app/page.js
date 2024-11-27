@@ -35,6 +35,7 @@ const LandingPage = () => {
   const [isRating, setIsRating] = useState(false); // 별점 선택 UI 상태 관리
   const [activeReviewId, setActiveReviewId] = useState(null); // 현재 별점을 선택 중인 리뷰 ID
 
+
   const handleButtonClick = () => {
     if (inputText.trim() === "") return; // 빈 문자열 입력 방지
 
@@ -50,10 +51,10 @@ const LandingPage = () => {
     setActiveReviewId(newReview.id); // 활성 리뷰 ID 설정
 	setShowOverlay(true); // 오버레이 표시
 
-	// 2초 후 오버레이 자동 닫기
+	// 3초 후 오버레이 자동 닫기
 	setTimeout(() => {
 		setShowOverlay(false);
-		}, 5000);
+		}, 3000);
   };
 
 
@@ -68,16 +69,14 @@ const LandingPage = () => {
   };
 
   return (
-    <div className={styles.Landing}>
-			<Navi/>
       <div className={styles.Container}>
         <div className={styles.semi_content}>
           가장 최근에 다녀왔던 맥도날드의 리뷰를 영어로 남겨보세요!
         </div>
         <div className={styles.semi_content_2}>
           AI가 당신이 남길 별점을 예측해드립니다.
-        </div>
-		<div className={styles.rectangle}></div>
+			<Navi/>
+		  <div className={styles.rectangle}></div>
 
         <div className={styles.all_chatting_box}>
           {/* 기존 리뷰 */}
@@ -124,14 +123,15 @@ const LandingPage = () => {
 		 ))}
         </div>
 
-		{/* 오버레이 */}
-		{showOverlay && (
+
+
+		<div className={styles.inputContainer}>
+    	{/* 오버레이 */}
+		  {showOverlay && (
           <div className={styles.overlay}>
             실제로 남길 별점을 입력해주세요. 차후 학습에 이용됩니다.
           </div>
         )}
-
-		<div className={styles.inputContainer}>
           <textarea
             className={styles.input}
             type="text"
