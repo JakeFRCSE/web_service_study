@@ -21,8 +21,8 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 `맥도날드 리뷰 데이�
 
 #### 1.4. 주차 별 계획 및 진행사항
 
-(2024-10-26 기준)
-[![TimeLine](./documents/README_img/timeline.png)](https://aeolian-arch-69e.notion.site/12b7102ef97780f287b4e18be2041cc1?v=3907530821de471d91c949cfe7f19a53)
+(2024-11-27 기준)
+[![image](https://github.com/user-attachments/assets/2e3604b0-7d03-4216-a52a-c100817d2ce5)](https://aeolian-arch-69e.notion.site/12b7102ef97780f287b4e18be2041cc1?v=3907530821de471d91c949cfe7f19a53)
 
 - **F**: Front-End
 - **B**: Back-End
