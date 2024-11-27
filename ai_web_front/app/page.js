@@ -104,8 +104,7 @@ const LandingPage = () => {
 
 		 {/* 새로 작성된 리뷰 */}
 		 {newReviews.map((review) => (
-		 <div key={review.id} className={styles.chatRow}>
-			 <p className={styles.newReview}>{review.reviewContents}</p>
+		 <div key={review.id} className={styles.chatRow2}>
 			 <div className={styles.starRating}>
 			 {/* 선택된 별점 표시 */}
 			 {Array.from({ length: 5 }, (_, i) => (
@@ -119,6 +118,7 @@ const LandingPage = () => {
 				 />
 			 ))}
 			 </div>
+       <p className={styles.newReview}>{review.reviewContents}</p>
 		 </div>
 		 ))}
         </div>
