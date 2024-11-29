@@ -200,11 +200,11 @@ predicted_score = model.predict(text)
 print(f"예측된 점수: {predicted_score}")
 ```
 
----
+
 
 ## 요약
 
 - Jupyter Notebook에서 BERT 기반 리뷰 분류 모델을 학습했습니다.
 - 학습된 모델을 저장하고, 이를 재사용할 수 있도록 모듈화했습니다.
 - 사용자는 간단한 입력 텍스트를 통해 리뷰 점수를 예측할 수 있습니다.
-```
+
