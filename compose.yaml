@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    ports: 
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DATABASES_USER}
+      POSTGRES_PASSWORD: ${DATABASES_PASSWORD}
+      POSTGRES_DB: ${DATABASES_NAME}
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+
+networks:
+  aiweb-network:
+    external: true
