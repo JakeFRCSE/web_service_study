@@ -13,3 +13,6 @@ __pycache__/
 
 # sqlite data
 db.sqlite3
+
+# redis data
+redis
