@@ -1,0 +1,18 @@
+FROM node:20.18
+
+WORKDIR /usr/src/frontend
+
+# COPY <local file or directory> <image directory>
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+# COPY . .
+
+# 배포용
+# RUN npm run build
+
+# CMD ["npm", "run", "start"]
+
+# 개발용
+CMD ["npm", "run", "dev"]

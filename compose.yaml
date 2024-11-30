@@ -12,7 +12,29 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - ~/apps/postgres:/var/lib/postgresql/data
+    networks:
+      - aiweb-network
+
+  front:
+    container_name: frontend-nextjs
+    build:
+      context: ./ai_web_front
+      dockerfile: ./dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./ai_web_front:/usr/src/frontend
+      - /usr/src/frontend/node_modules
+      - /usr/src/frontend/.next
+    networks:
+      - aiweb-network
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    env_file: ./.env
 
 networks:
   aiweb-network:
-    external: true
+    driver: bridge
