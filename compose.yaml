@@ -46,19 +46,38 @@ services:
       - ./redis/data:/data
     environment:
       REDIS_HOST_PASSWORD: ${REDIS_PASSWORD}
+    networks:
+      - aiweb-network
 
+  celery:
+    container_name: celery-worker
+    build:
+      context: ./ai-web-back
+      dockerfile: ./dockerfile
+    restart: always
+    networks:
+      - aiweb-network
+    env_file: ./.env
+    command: celery -A myapp worker --loglevel=info --pool=gevent
+    depends_on:
+      - redis
+    
+  back:
+    container_name: backend-django
+    build:
+      context: ./ai-web-back
+      dockerfile: ./dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - aiweb-network
+    env_file: ./.env
+    command: sh -c "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8080 --noreload"
+    depends_on:
+      - celery
+      - db
 
-  # back:
-  #   container_name: backend-django
-  #   build:
-  #     context: ./ai-web-back
-  #     dockerfile: ./dockerfile
-  #   restart: always
-  #   ports:
-  #     - "8000:8000"
-  #   networks:
-  #     - aiweb-network
-  #   env_file: ./.env
 
 networks:
   aiweb-network:
