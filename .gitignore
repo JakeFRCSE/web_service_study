@@ -13,3 +13,7 @@ __pycache__/
 
 # sqlite data
 db.sqlite3
+
+
+# 모델 가중치 파일
+saved_model.pth

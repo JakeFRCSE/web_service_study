@@ -2,6 +2,13 @@ import torch
 import re
 from transformers import BertTokenizer, BertForSequenceClassification
 
+
+import os
+model_path = os.path.join(os.path.dirname(__file__), 'saved_model.pth')
+
+
+
+
 class ReviewModel:
     def __init__(self, 
                  model_name: str = "bert-base-uncased", 
@@ -15,7 +22,7 @@ class ReviewModel:
         """
         self.tokenizer = BertTokenizer.from_pretrained(model_name)
         self.model = BertForSequenceClassification.from_pretrained(model_name, num_labels=model_labels)
-        self.model.load_state_dict(torch.load(model_path))
+        self.model.load_state_dict(torch.load(model_path), strict=False)
         self.model.eval()
     
     @staticmethod
