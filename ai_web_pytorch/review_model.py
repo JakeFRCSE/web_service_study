@@ -5,8 +5,6 @@ import lightning as L
 from transformers import AdamW
 
 # 클린업 함수
-def clean_corrupted(text):
-    return re.sub(r'[^\x00-\x7F]+', '', text)
 
 class ReviewModel(L.LightningModule):
     def __init__(self, model_name, lr=2e-5, num_labels=5):
@@ -36,12 +34,16 @@ class ReviewModel(L.LightningModule):
 
 # 모델 및 토크나이저 초기화 (모델은 한 번만 로드됨)
 class ReviewService:
-    def __init__(self, model_path='saved_model.pth', model_name='bert-base-uncased'):
+    def __init__(self, model_path = r'ai_web_pytorch\model (4).pth', model_name='bert-base-uncased'):
+
         self.tokenizer = BertTokenizer.from_pretrained(model_name)
-        self.model = torch.load(model_path)
+        self.model = ReviewModel(model_name)
+        self.model.load_state_dict(torch.load(model_path))
         self.model.eval()  # 평가 모드로 설정
 
     def predict_review_score(self, text):
+        def clean_corrupted(text):
+            return re.sub(r'[^\x00-\x7F]+', '', text)
         # 텍스트 클린업
         cleaned_text = clean_corrupted(text)
 
@@ -78,3 +80,4 @@ if __name__ == "__main__":
             exit()
         predicted_score = review_service.predict_review_score(text)
         print(f"Predicted Score: {predicted_score}")
+  
