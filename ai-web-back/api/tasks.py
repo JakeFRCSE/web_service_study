@@ -1,15 +1,14 @@
 from myapp.celery import app
 import time
 from .models import Review
-from .review_model import ReviewModel
-
-#import os, sys
-#sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-#from ai_web_pytorch.review_model import ReviewModel
 
 
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from ai_web_pytorch.review_model import ReviewService
 
-model = ReviewModel() 
+
+model = ReviewService()
 
 @app.task()
 def predict(string:str, review_id:int) -> None:
