@@ -34,7 +34,7 @@ class ReviewModel(L.LightningModule):
 
 # 모델 및 토크나이저 초기화 (모델은 한 번만 로드됨)
 class ReviewService:
-    def __init__(self, model_path = r'ai_web_pytorch\model (4).pth', model_name='bert-base-uncased'):
+    def __init__(self, model_path = r'/Users/sanghunii/Desktop/Group-11/ai_web_pytorch/model.pth', model_name='bert-base-uncased'):
 
         self.tokenizer = BertTokenizer.from_pretrained(model_name)
         self.model = ReviewModel(model_name)

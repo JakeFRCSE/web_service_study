@@ -12,7 +12,7 @@ model = ReviewService()
 
 @app.task()
 def predict(string:str, review_id:int) -> None:
-    modelRatings = model.predict(string)
+    modelRatings = model.predict_review_score(string)
     review = Review.objects.get(id = review_id)
     review.modelRatings = modelRatings
     review.save(update_fields=['modelRatings'])
