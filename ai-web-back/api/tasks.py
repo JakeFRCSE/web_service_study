@@ -5,10 +5,11 @@ from .models import Review
 
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from ai_web_pytorch.review_model import ReviewService
+##from ai_web_pytorch.review_model import ReviewService
+from ai_web_pytorch import model
 
 
-model = ReviewService()
+##model = ReviewService()
 
 @app.task()
 def predict(string:str, review_id:int) -> None:
