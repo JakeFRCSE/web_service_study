@@ -39,7 +39,7 @@ const LandingPage = () => {
   // 리뷰 데이터를 서버 없이 한 페이지 내에서 처리
   const postReview = async (reviewContents, userRatings) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/review/", {
+      const response = await fetch("http://127.0.0.1:8000/api/review", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
