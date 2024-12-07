@@ -1,45 +1,54 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Navi from "@/components/Navi";
 
 const LandingPage = () => {
-  const initialData = [
-    {
-      id: 423,
-      reviewContents: "holy shit so delicious",
-      modelRatings: 5,
-    },
-    {
-      id: 424,
-      reviewContents: "Is this food?",
-      modelRatings: 1,
-    },
-    {
-      id: 425,
-      reviewContents: "disgusting",
-      modelRatings: 1,
-    },
-    {
-      id: 426,
-      reviewContents:
-        "dskafnsdklafnksdalflaksfdhlk;ashfl;asdhfiopasdufaiosdhfalsd;",
-      modelRatings: 3,
-    },
-  ];
+  const [existingReviews, setExistingReviews] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // 기본값 1
+  const [maxPage, setMaxPage] = useState(1);
+  const pageSize = 5; // 한 페이지에 보여줄 리뷰 수
 
-  const [existingReviews, setExistingReviews] = useState(initialData); // 기존 리뷰
+  useEffect(() => {
+    const fetchReviews = async () => {
+      // currentPage와 pageSize의 유효성을 항상 보장
+      const validPage = currentPage > 0 ? currentPage : 1;
+      const validSize = pageSize > 0 ? pageSize : 5;
+
+      try {
+        // API 호출
+        const response = await fetch(
+          `http://127.0.0.1:8080/api/review?page=${validPage}&size=${validSize}`
+        );
+
+        if (!response.ok) {
+          console.error("리뷰 데이터 가져오기 실패:", response.statusText);
+          return;
+        }
+
+        const data = await response.json();
+        setExistingReviews(data.reviews);
+        setMaxPage(data.pageinfo.maxPage); // 최대 페이지 수 설정
+      } catch (error) {
+        console.error("리뷰 API 호출 중 에러 발생:", error);
+      }
+    };
+
+    fetchReviews();
+  }, [currentPage]); // currentPage가 변경될 때마다 호출
+
   const [newReviews, setNewReviews] = useState([]); // 새로 작성된 리뷰
   const [inputText, setInputText] = useState(""); // 입력한 텍스트 상태 관리
   const [showOverlay, setShowOverlay] = useState(false); // 오버레이 상태 관리
   const [isRating, setIsRating] = useState(false); // 별점 선택 UI 상태 관리
   const [activeReviewId, setActiveReviewId] = useState(null); // 현재 별점을 선택 중인 리뷰 ID
 
+
   // 리뷰 데이터를 서버 없이 한 페이지 내에서 처리
   const postReview = async (reviewContents, userRatings) => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/review", {
+      const response = await fetch("http://127.0.0.1:8080/api/review", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,20 +66,22 @@ const LandingPage = () => {
   
       const data = await response.json();
       console.log("등록된 리뷰 ID:", data.id);
+      return data;
     } catch (error) {
       console.error("API 호출 중 에러 발생:", error);
     }
   };
   
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async() => {
     if (inputText.trim() === "") return; // 빈 문자열 입력 방지
 
-    const newReview = {
-      id: Date.now(), // 고유 ID 생성
-      reviewContents: inputText,
-      modelRatings: null, // 아직 별점 미선택
-    };
+    const newReview = await postReview(inputText);
+
+    if (!newReview) {
+      console.error("리뷰 추가 중 문제가 발생했습니다.");
+      return;
+    }
 
     setNewReviews((prevReviews) => [...prevReviews, newReview]); // 새 리뷰 추가
     setInputText(""); // 입력 필드 초기화
