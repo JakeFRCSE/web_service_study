@@ -58,7 +58,7 @@ services:
     networks:
       - aiweb-network
     env_file: ./.env
-    command: celery -A myapp worker --loglevel=info --pool=gevent
+    command: celery -A myapp worker -l info --pool threads
     depends_on:
       - redis
     
