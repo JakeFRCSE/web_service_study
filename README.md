@@ -31,22 +31,22 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 `맥도날드 리뷰 데이�
 | 주차 | 키워드 | 계획 | 진행 내역 |
 |:-------:|:-------:|:-------:|:-------:|
 | 1주차 | React | Web 기초 스터디 **F** <br> React 스터디 **F** | 1. [HTML, CSS, JS](./documents/week1/Web%20Basic.md) <br> 2. [React](https://www.notion.so/React-5d06778aa9b541d8ba95270fd4db5591) |
-| 2주차 | HTTP, Figma | HTTP 기반 API 스터디 **F,B,A** <br> Figma로 Wireframe 설계 **F** | 1. [HTTP 기반 API](https://www.notion.so/HTTP-API-64249f434f934fb3a7da7c9062b9fad3) <br> 2. [Figma Wireframe](./documents/week2/Figma%20Wireframe.md) |
-| 3주차 | Django, REST API | Django 기초 스터디 **B,A** <br> Django REST Framework 스터디 **B,A** | 1. [Django](./documents/week3/django/django%20basic.md) <br> 2-1. [Django ↔ React](./documents/week3/django-react%20연동/django-react%20연동.md)<br> 2-2. [django-rest-framework](./documents/week3/djangoRestFramework/djangoRESTframework.md) |
+| 2주차 | HTTP <br> Figma | HTTP 기반 API 스터디 **F,B,A** <br> Figma로 Wireframe 설계 **F** | 1. [HTTP 기반 API](https://www.notion.so/HTTP-API-64249f434f934fb3a7da7c9062b9fad3) <br> 2. [Figma Wireframe](./documents/week2/Figma%20Wireframe.md) |
+| 3주차 | Django <br> REST API | Django 기초 스터디 **B,A** <br> Django REST Framework 스터디 **B,A** | 1. [Django](./documents/week3/django/django%20basic.md) <br> 2-1. [Django ↔ React](./documents/week3/django-react%20연동/django-react%20연동.md)<br> 2-2. [django-rest-framework](./documents/week3/djangoRestFramework/djangoRESTframework.md) |
 | 4주차 | Pytorch <br> Next.js <br> DB | Pytorch 기초 스터디 **A** <br> Next.js로 UI 구축 -1- **F** <br> DB (PostgreSQL) 스터디 **B** | 1. [Pytorch Basic](./documents/week4/Pytorch%20Basic.md) <br> 2. [Next.js UI](./documents/week4/NextJS_Create_the_UI.md) <br>  3. [Databse](./documents/week4/DataBase.md) |
 | 5주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -1- **A** <br> Next.js로 UI 구축 -2- **F** <br> API 명세서 작성 및 DB ERD 작성 **B,A** | 1. [Pytorch 모델 가공](./documents/week5/Modularzation_ipynbToPy.md) <br> 2. [Next.js UI](./documents/week4/NextJS_Create_the_UI.md) <br> 3-0. [Django 환경 세팅](./documents/week5/Django_Install_and_Setting.md) <br> 3-1. [API 명세서 작성](./documents/week5/API_Document.md) |
 | 6주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 가공 -2- **A** <br> Next.js로 UX 구축 -1- **F** <br> REST API 구현 -1- **B** | 1. [Pytorch 모델 가공](./documents/week5/Modularzation_ipynbToPy.md) <br> 2. Next.js UX <br> 3. [REST API 구현 -1-](./documents/week6/RESTAPI_구현-1-.md) |
 | 7주차 | Pytorch <br> Next.js <br> Django, REST API | Pytorch 모델 API Serving **A** <br> Next.js로 UX 구축 -2- **F** <br> REST API 구현 -2- **B** | 1. [Torch 모델 API Serving](./ai-web-back/api/tasks.py) <br> 2. Next.js UX <br> 3. [REST API 구현 -2-](./documents/week7/RESTAPI_구현-2-.md) |
-| **8주차** | Pytorch <br> Next.js <br> Django, REST API | 통합 테스트 및 디버깅 -1- **F,B,A** | - |
+| 8주차 | Pytorch <br> Next.js <br> Django, REST API | 통합 테스트 및 디버깅 -1- **F,B,A** | - |
 | 9주차 | Pytorch <br> Next.js <br> Django, REST API | 통합 테스트 및 디버깅 -2- **F,B,A** | - |
-| 10주차 | Docker | Docker로 인프라 구축하기 **B** | 1. [Docker 설정하기](./documents/week10/docker.md) |
-| 11주차 | AWS | 서비스 배포 **B** | - |
+| 10주차 | Docker | Docker로 인프라 구축하기 | 1. [Docker 설정하기](./documents/week10/docker.md) |
+| 11주차 | AWS | 서비스 배포 | 비용 문제로 인한 미진행 <br> 배포 예정 |
 
 ### 2. 상세설계
 #### 2.1. 시스템 구성도
 ![System Diagram](/documents/README_img/System_Diagram.png)
 
-#### 2.1. 사용 기술
+#### 2.2. 사용 기술
 
 - Frontend
   ```text
@@ -100,22 +100,101 @@ AID(정보컴퓨터공학부 AI동아리) 내에서 `맥도날드 리뷰 데이�
 ![Database ERD](./documents/README_img/ERD.png)
 
 #### 3.4. 디렉토리 구조
-> 위 레포지토리의 디렉토리 구조를 설명하세요.
+- Root (`GROUP-11`)
+```shell
+📁 ┬ 📁.github # Github 레포지토리 설정 관련 파일
+🔹 ├ 📁ai_web_front # FrontEnd를 담당하는 Next.js 폴더
+🔹 ├ 📁ai-web-back # BackEnd를 담당하는 Django 폴더
+🔹 ├ 📁documents # README.md와 연결된 각종 문서 파일
+🔹 ├ 📁notice # PNU 스터디 그룹 공지사항 파일 폴더
+🔹 ├ ⚙️.env # .gitignore로 인해 Push되지 않는 환경변수를 담은 파일
+🔹 │         # 프로젝트 실행을 위해 직접 생성해주어야함
+🔹 ├ ⚙️.gitignore # 레포지토리에 올리지 않을 파일 목록을 기재한 파일
+🔹 ├ 🐋compose.yaml # 빠른 실행 및 환경 구성을 위한 Docker-Compose 관련 파일
+🔹 └ 📜README.md # 지금 여러분이 보고 있는 Markdown 문서
+```
+
+- `ai_web_front`
+```shell
+📁 ┬ 📁app # Next.js에서 렌더링 및 라우팅할 React 파일이 담겨있는 폴더
+🔹 ├ 📁components # React 공용(자주사용되는) Component를 담은 폴더
+🔹 ├ 📁public # 이미지, 정적데이터와 같은 정적 파일들을 담은 폴더
+🔹 ├ 📁documents # README.md와 연결된 각종 문서 파일
+🔹 ├ 📁notice # PNU 스터디 그룹 공지사항 파일 폴더
+🔹 ├ ⚙️.gitignore # Next.js가 자동 생성한 Next.js의 .gitignore 목록
+🔹 ├ 🐋dockerfile # Docker 실행을 위해 Next.js 실행 명령어를 담은 파일
+🔹 ├ 🪛jsconfig.json # javascript 설정 파일
+🔹 ├ 🪛next.config.mjs # Next.js 설정 파일
+🔹 ├ 🪛package-lock.json # 패키지에 필요한 모듈 의존성을 담은 파일
+🔹 ├ 🪛package.json # 패키지에 필요한 구성요소를 담은 파일
+🔹 └ 📜README.md # Next.js가 자동생성한 README.md
+```
+
+- `ai-web-back`
+```shell
+📁 ┬ 📁api # API 기능을 담은 폴더. /api/** 로 라우팅 됨
+🔹 ├ 📁myapp # Django 기본 기능 및 Celery, django 설정을 담은 폴더
+🔹 ├ 🐋dockerfile # Docker 실행을 위해 Django와 Celery 실행 명령어를 담은 파일
+🔹 ├ 🪛manage.py # Django 실행을 위한 Django 메인 스크립트 파일
+🔹 └ 📜pip_requirements.txt # Django, Celery, Torch에 필요한 모듈 목록을 담은 문서
+```
 
 ### 4. 설치 및 사용 방법
-> 제품을 설치하기 위헤 필요한 소프트웨어 및 설치 방법을 작성하세요.
->
-> 제품을 설치하고 난 후, 실행 할 수 있는 방법을 작성하세요.
+#### 4.1. Docker를 이용한 실행 방법
+1. Docker Desktop 설치 및 실행 - [Windows Link](https://docs.docker.com/desktop/setup/install/windows-install/), [Mac Link](https://docs.docker.com/desktop/setup/install/mac-install/), [Linux Link](https://docs.docker.com/desktop/setup/install/linux/)
+2. Root (`GROUP-11`) 폴더에 `.env` 파일 생성 및 아래 내용 삽입
+```shell
+# Django 프로젝트 생성 시 발급된 KEY 삽입
+SECRET_KEY='django-insecure-YOUR_DJANGO_INSECURE'
 
-### 5. 소개 및 시연 영상
-> 프로젝트에 대한 소개와 시연 영상을 넣으세요.
-> 프로젝트 소개 동영상을 교육원 메일(swedu@pusan.ac.kr)로 제출 이후 센터에서 부여받은 youtube URL주소를 넣으세요.
+CORS_ORIGIN_WHITELIST_FROM='http://localhost:8080'
+CORS_ORIGIN_WHITELIST_TO='http://localhost:3000'
 
-### 6. 팀 소개
+DATABASES_ENGINE='django.db.backends.postgresql'
+DATABASES_NAME=aiweb
+DATABASES_USER=aiweb
+DATABASES_PASSWORD='YOUR POSTGRESQL PASSWORD'
+DATABASES_HOST=postgres
+# Docker를 이용하지 않고 Back-End 개별 실행시 아래 값 이용
+# DATABASES_HOST='YOUR DB HOST, 기본값: localhost'
+DATABASES_PORT=5432
+
+# 현재 Docker에 REDIS_USER를 설정하는 스크립트를 설정해놓지
+# 않아, 빈 스트링 이외의 값이 들어갈 시 에러 발생
+REDIS_USER=''
+REDIS_PASSWORD='YOUR REDIS PASSWORD'
+REDIS_URL=redis
+# Docker를 이용하지 않고 Back-End 개별 실행시 아래 값 이용
+# REDIS_URL='YOUR REDIS HOST, 기본값: localhost'
+```
+3. Terminal을 이용하여 Root 폴더(`Group-11`)에서 아래 명령어 실행, 첫 실행시 완료까지 수분 소요
+```shell
+docker-compose up --build -d
+```
+4. Docker에서 `backend-django` 컨네이너의 로그 확인, 아래 로그가 출력되면 컨테이너 실행 완료.
+![Docker Log](./documents/README_img/Docker-log.png)
+- Torch에 대한 경고문이 출력되나, 정상적으로 실행됨을 확인하였습니다.
+5. 웹브라우저를 이용하여 `http://localhost:3000`으로 접속
+
+#### 4.2. Docker를 이용하지 않고 각 Domain 개별 실행
+각 영역별 문서 참고
+- Front-End
+  - [Front-End 실행](./documents/week4/NextJS_Install_and_Setting.md)
+- Back-End with Torch
+  - [Back-End 실행 -1-](./documents/week5/Django_Install_and_Setting.md)
+  - [Back-End 실행 -2-](./documents/week6/RESTAPI_구현-1-.md)
+
+### 5. 팀 소개
 > 팀원 소개 & 구성원 별 역할 분담 & 간단한 연락처를 작성하세요.
 #### 🍱 배고픈사람들
-| 이동훈 | 조현성 | 안소희 | 박준혁 | 박상훈 |곽도연 |
-|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
-|<img width="100px" alt="이동훈" src="https://avatars.githubusercontent.com/u/67902252?s=60&v=4/f5b5df2a-e174-437d-86b2-a5a23d9ee75d" /> | <img width="100px" alt="조현성" src="https://avatars.githubusercontent.com/u/138447029?v=4" /> | <img width="100px" alt="안소희" src="https://avatars.githubusercontent.com/u/127065983?s=60&v=4" /> |<img width="100px" alt="박준혁" src="https://avatars.githubusercontent.com/u/162955476?s=60&v=4" /> | <img width="100px" alt="박상훈" src="https://avatars.githubusercontent.com/u/152972679?s=60&v=4" />| <img width="100px" alt="곽도연" src="https://avatars.githubusercontent.com/u/165464282?s=60&v=4" /> |
-| therqq13@pusan.ac.kr | sungsam3312@pusan.ac.kr | soheean1370@pusan.ac.kr | eppi001004@gmail.com | sanghoon556@pusan.ac.kr |gdy0210@pusan.ac.kr |
-| 총괄 <br/> 인프라 구축 | Pytorch 개발 | Pytorch 개발 | 백엔드 개발 | 백엔드 개발 | 프론트엔드 개발 |
+| 이동훈 | 조현성 | 안소희 |
+|:-------:|:-------:|:-------:|
+|<a href="https://github.com/bluelemon61"><img width="100px" alt="이동훈" src="https://avatars.githubusercontent.com/u/67902252?v=4" /></a> | <a href="https://github.com/hyunsung1221"><img width="100px" alt="조현성" src="https://avatars.githubusercontent.com/u/138447029?v=4" /></a> | <a href="https://github.com/soheean1370"><img width="100px" alt="안소희" src="https://avatars.githubusercontent.com/u/127065983?v=4" /></a> |
+| therqq13@pusan.ac.kr | sungsam3312@pusan.ac.kr | soheean1370@pusan.ac.kr |
+| 총괄 <br/> 인프라 구축 | Pytorch 개발 | Pytorch 개발 |
+
+| 박준혁 | 박상훈 |곽도연 |
+|:-------:|:-------:|:-------:|
+|<a href="https://github.com/JakeFRCSE"><img width="100px" alt="박준혁" src="https://avatars.githubusercontent.com/u/162955476?v=4" /></a> | <a href="https://github.com/sanghunii"><img width="100px" alt="박상훈" src="https://avatars.githubusercontent.com/u/152972679?v=4" /></a>| <a href="https://github.com/Karryun"><img width="100px" alt="곽도연" src="https://avatars.githubusercontent.com/u/165464282?v=4" /></a> |
+| eppi001004@gmail.com | sanghoon556@pusan.ac.kr |gdy0210@pusan.ac.kr |
+| 백엔드 개발 | 백엔드 개발 | 프론트엔드 개발 |

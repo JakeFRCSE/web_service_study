@@ -45,7 +45,8 @@ source .venv/bin/activate
 ## 1. Python Library 설치
 해당 프로젝트에 필요한 파이썬 라이브러리는 다음과 같다.
 
-**프로젝트가 진행되면서 더 추가될 예정 (ex. Pytorch, Numpy, ...)**
+**프로젝트가 진행되면서 필요한 라이브러리가 많아짐 링크 접속 후 내용 복사 추천 →**
+[`pip_requirements.txt`](../../ai-web-back/pip_requirements.txt)
 ```text
 asgiref==3.8.1
 Django==5.1
@@ -53,7 +54,7 @@ djangorestframework==3.15.2
 sqlparse==0.5.1
 ```
 
-위 내용을 Root Directory에 [`pip_requirements.txt`](../../pip_requirements.txt)로 생성하여 붙여넣자.
+위 내용을 Root Directory에 [`pip_requirements.txt`](../../ai-web-back/pip_requirements.txt)로 생성하여 붙여넣자.
 ```text
 📁 ┬ 📁.venv
 🔹 ├ 📁ai_web_front
