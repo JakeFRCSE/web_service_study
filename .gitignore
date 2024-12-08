@@ -1,4 +1,4 @@
-# environment variables
+s# environment variables
 .env
 
 # python virtual environment
@@ -13,3 +13,10 @@ __pycache__/
 
 # sqlite data
 db.sqlite3
+
+
+# 모델 파일
+model.pth
+
+# redis
+redis/

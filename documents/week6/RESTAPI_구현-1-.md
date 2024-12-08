@@ -160,6 +160,11 @@ $ sudo redis-cli
 ...\myapp> celery -A myapp worker -l info -P gevent
 ```
 
+Mac과 Linux는 다음과 같다.
+```shell
+celery -A myapp worker -l info --pool threads 
+```
+
 ![runCelery](./img/runCelery.png)
 
 다음과 같은 화면이 나타나면 비동기처리 구현을 위한 모든 준비가 마쳐진 상태이다.
