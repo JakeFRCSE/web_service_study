@@ -45,7 +45,6 @@ const LandingPage = () => {
   }, [currentPage]); // currentPage가 변경될 때마다 호출
 
 
-  // 리뷰 데이터를 서버 없이 한 페이지 내에서 처리
   const postReview = async (reviewContents, userRatings = null) => {
     try {
       const response = await fetch("http://127.0.0.1:8080/api/review", {
@@ -113,80 +112,96 @@ const LandingPage = () => {
   };
   
 
-  const handleRatingSelect = async (rating) => {
+  const handleReviewSubmit = () => {
     if (inputText.trim() === "") {
       console.error("리뷰 내용을 입력하세요.");
       return;
     }
   
-    try {
-      // 리뷰와 별점 서버로 전송
-      const newReview = await postReview(inputText.trim(), rating);
+    // 리뷰 내용을 임시로 저장하고 별점 입력 UI 활성화
+    const tempReview = {
+      id: Date.now(), // 임시 ID
+      reviewContents: inputText.trim(),
+      userRatings: null, // 별점은 아직 선택되지 않음
+      modelRatings: null, // 모델 별점 초기화
+    };
   
-      if (!newReview) {
-        console.error("리뷰 등록 실패");
-        return;
-      }
-  
-      setNewReviews((prevReviews) => [...prevReviews, newReview]); // 새 리뷰 추가
-      setInputText(""); // 입력 필드 초기화
-      setIsRating(false); // 별점 선택 UI 비활성화
-      setActiveReviewId(null); // 활성 리뷰 ID 초기화
-      setShowOverlay(false); // 오버레이 닫기
-    } catch (error) {
-      console.error("리뷰 전송 중 에러 발생:", error);
-    }
+    setNewReviews((prevReviews) => [...prevReviews, tempReview]);
+    setInputText(""); // 입력 필드 초기화
+    setIsRating(true); // 별점 입력 활성화
+    setActiveReviewId(tempReview.id); // 별점 선택 중인 리뷰 ID 저장
   };
+  
 
-  const handleReviewSubmit = async (rating) => {
-    if (inputText.trim() === "" || rating === null) {
-      console.error("리뷰 내용과 별점을 입력하세요.");
+  const handleRatingSubmit = async (rating) => {
+    if (!activeReviewId || rating === null) {
+      console.error("별점을 선택하세요.");
       return;
     }
-
-    // 1. 리뷰 등록
+  
+    setIsRating(false); // 별점 입력 UI 비활성화
+    setShowOverlay(false); // 오버레이 숨기기
     setLoading(true); // 로딩 상태 활성화
-    const newReview = await postReview(inputText.trim(), rating);
-
-    if (!newReview) {
-      console.error("리뷰 등록 실패");
+  
+    // 리뷰 데이터 업데이트
+    setNewReviews((prevReviews) =>
+      prevReviews.map((review) =>
+        review.id === activeReviewId ? { ...review, userRatings: rating } : review
+      )
+    );
+  
+    // 서버에 리뷰 전송
+    const reviewToSubmit = newReviews.find((review) => review.id === activeReviewId);
+  
+    if (!reviewToSubmit) {
+      console.error("리뷰를 찾을 수 없습니다.");
       setLoading(false);
       return;
     }
-
-    setNewReviews((prevReviews) => [...prevReviews, newReview]); // 새 리뷰 추가
-    setInputText(""); // 입력 필드 초기화
-    setIsRating(false);
-
-    // 2. 주기적으로 예측 상태 확인
-    const interval = setInterval(async () => {
-      const status = await checkPredictionStatus(newReview.id);
-
-      if (status?.isCompleted) {
-        clearInterval(interval); // 상태 확인 중단
-
-        // 3. 모델 결과 가져오기
-        const result = await fetchReviewPrediction(newReview.id);
-
-        if (result) {
-          setNewReviews((prevReviews) =>
-            prevReviews.map((review) =>
-              review.id === newReview.id
-                ? { ...review, modelRatings: result.modelRatings }
-                : review
-            )
-          );
-        }
-
-        setLoading(false); // 로딩 상태 비활성화
-      } else if (status === null) {
-        console.error("예측 상태 확인 실패. 주기적 호출 중단.");
-        clearInterval(interval);
+  
+    try {
+      const newReview = await postReview(reviewToSubmit.reviewContents, rating);
+      if (!newReview) {
+        console.error("리뷰 등록 실패");
         setLoading(false);
+        return;
       }
-    }, 2000); // 2초 간격으로 상태 확인
+  
+      // 서버 응답을 사용해 상태 업데이트
+      setNewReviews((prevReviews) =>
+        prevReviews.map((review) =>
+          review.id === activeReviewId
+            ? { ...newReview, userRatings: rating, modelRatings: null } // 서버 응답 반영
+            : review
+        )
+      );
+  
+      // 모델 별점 예측 상태 확인
+      const interval = setInterval(async () => {
+        const status = await checkPredictionStatus(newReview.id);
+        if (status?.isCompleted) {
+          clearInterval(interval);
+  
+          const result = await fetchReviewPrediction(newReview.id);
+          if (result) {
+            setNewReviews((prevReviews) =>
+              prevReviews.map((review) =>
+                review.id === newReview.id
+                  ? { ...review, modelRatings: result.modelRatings }
+                  : review
+              )
+            );
+          }
+          setLoading(false); // 로딩 상태 비활성화
+        }
+      }, 2000); // 2초마다 상태 확인
+    } catch (error) {
+      console.error("예측 상태 확인 중 에러:", error);
+      setLoading(false);
+    }
   };
-
+  
+  
   
   return (
     <div className={styles.Container}>
@@ -230,7 +245,7 @@ const LandingPage = () => {
                 <img
                   key={i}
                   src={
-                    i < (review.modelRatings || 0)
+                    i < (review.userRatings || 0)
                       ? "/yellow_star.svg"
                       : "/empty_star.svg"
                   }
@@ -267,16 +282,12 @@ const LandingPage = () => {
   // 별점 선택 모드가 비활성화된 경우
   <button
     className={styles.Upload}
-    onClick={() => {
-      if (inputText.trim() === "") {
-        console.error("리뷰 내용을 입력하세요.");
-        return;
-      }
-
-      // 별점 선택 모드 활성화
-      setIsRating(true);
-      setShowOverlay(true); // 오버레이 활성화
-    }}
+  onClick={() => {
+    // 별점 선택 모드 활성화
+    setIsRating(true);
+    setShowOverlay(true); // 오버레이 활성화
+    handleReviewSubmit(); // 리뷰 제출 함수 호출
+  }}
   >
     <img src="/send.svg" width="14" height="12" alt="send" />
   </button>
@@ -291,7 +302,7 @@ const LandingPage = () => {
         height="24"
         alt="star"
         onClick={() => {
-          handleReviewSubmit(i + 1); // 별점 선택
+          handleRatingSubmit(i + 1); // 별점 선택
         }}
         onMouseEnter={(e) => (e.target.src = "/yellow_star.svg")}
         onMouseLeave={(e) => (e.target.src = "/empty_star.svg")}
