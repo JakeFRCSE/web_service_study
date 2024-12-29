@@ -71,6 +71,7 @@ const LandingPage = () => {
     }
   };
 
+
   const checkPredictionStatus = async (reviewId) => {
     try {
       const response = await fetch(
@@ -90,6 +91,7 @@ const LandingPage = () => {
       return null;
     }
   };
+
 
   const fetchReviewPrediction = async (reviewId) => {
     try {
@@ -144,14 +146,13 @@ const LandingPage = () => {
     setLoading(true); // 로딩 상태 활성화
   
     // 리뷰 데이터 업데이트
-    setNewReviews((prevReviews) =>
-      prevReviews.map((review) =>
-        review.id === activeReviewId ? { ...review, userRatings: rating } : review
-      )
+    const updatedReviews = newReviews.map((review) =>
+      review.id === activeReviewId ? { ...review, userRatings: rating } : review
     );
+    setNewReviews(updatedReviews);
   
     // 서버에 리뷰 전송
-    const reviewToSubmit = newReviews.find((review) => review.id === activeReviewId);
+    const reviewToSubmit = updatedReviews.find((review) => review.id === activeReviewId);
   
     if (!reviewToSubmit) {
       console.error("리뷰를 찾을 수 없습니다.");
@@ -167,39 +168,44 @@ const LandingPage = () => {
         return;
       }
   
-      // 서버 응답을 사용해 상태 업데이트
-      setNewReviews((prevReviews) =>
-        prevReviews.map((review) =>
-          review.id === activeReviewId
-            ? { ...newReview, userRatings: rating, modelRatings: null } // 서버 응답 반영
-            : review
-        )
-      );
+      // 상태 확인 함수
+      const checkStatusAndFetchResult = async () => {
+        try {
+          const status = await checkPredictionStatus(newReview.id);
   
-      // 모델 별점 예측 상태 확인
-      const interval = setInterval(async () => {
-        const status = await checkPredictionStatus(newReview.id);
-        if (status?.isCompleted) {
-          clearInterval(interval);
-  
-          const result = await fetchReviewPrediction(newReview.id);
-          if (result) {
-            setNewReviews((prevReviews) =>
-              prevReviews.map((review) =>
-                review.id === newReview.id
-                  ? { ...review, modelRatings: result.modelRatings }
-                  : review
-              )
-            );
+          if (status?.isCompleted) {
+            // 상태가 완료되면 결과 가져오기
+            const result = await fetchReviewPrediction(newReview.id);
+            if (result) {
+              setNewReviews((prevReviews) =>
+                prevReviews.map((review) =>
+                  review.id === newReview.id
+                    ? { ...review, modelRatings: result.modelRatings }
+                    : review
+                )
+              );
+              console.log(`AI 예측 별점: ${result.modelRatings} (ID: ${newReview.id})`);
+            }
+            setLoading(false); // 로딩 상태 비활성화
+          } else {
+            console.log("예측 진행 중... 2초 후 다시 확인합니다.");
+            setTimeout(checkStatusAndFetchResult, 2000); // 2초 후 재확인
           }
-          setLoading(false); // 로딩 상태 비활성화
+        } catch (error) {
+          console.error("예측 상태 확인 중 에러:", error);
+          setLoading(false);
         }
-      }, 2000); // 2초마다 상태 확인
+      };
+  
+      // 상태 확인 시작
+      checkStatusAndFetchResult();
     } catch (error) {
       console.error("예측 상태 확인 중 에러:", error);
       setLoading(false);
     }
   };
+  
+
   
   
   
