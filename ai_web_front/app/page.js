@@ -173,7 +173,7 @@ const LandingPage = () => {
         try {
           const status = await checkPredictionStatus(newReview.id);
   
-          if (status?.isCompleted) {
+          if (status?.status) {
             // 상태가 완료되면 결과 가져오기
             const result = await fetchReviewPrediction(newReview.id);
             if (result) {
@@ -243,25 +243,27 @@ const LandingPage = () => {
           </div>
         ))}
 
-        {/* 새로 작성된 리뷰 */}
-        {newReviews.map((review) => (
-          <div key={review.id} className={styles.chatRow2}>
-            <div className={styles.starRating}>
-              {Array.from({ length: 5 }, (_, i) => (
-                <img
-                  key={i}
-                  src={
-                    i < (review.userRatings || 0)
-                      ? "/yellow_star.svg"
-                      : "/empty_star.svg"
-                  }
-                  alt="star"
-                />
-              ))}
-            </div>
-            <p className={styles.newReview}>{review.reviewContents}</p>
+      {/* 새로 작성된 리뷰 */}
+      {newReviews.map((review) => (
+        <div key={review.id} className={styles.chatRow2}>
+          <div className={styles.starRating}>
+            {Array.from({ length: 5 }, (_, i) => (
+              <img
+                key={i}
+                src={
+                  i < review.modelRatings
+                    ? "/yellow_star.svg"
+                    : "/empty_star.svg"
+                }
+                alt="star"
+              />
+            ))}
           </div>
-        ))}
+          <p className={styles.newReview}>{review.reviewContents}</p>
+        </div>
+      ))}
+
+
         
       </div>
 
