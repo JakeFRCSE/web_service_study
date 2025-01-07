@@ -10,39 +10,49 @@ const LandingPage = () => {
   const [inputText, setInputText] = useState(""); // 입력한 텍스트 상태 관리
   const [isRating, setIsRating] = useState(false); // 별점 선택 UI 상태 관리
   const [currentPage, setCurrentPage] = useState(1); // 기본값 1
-  const [maxPage, setMaxPage] = useState(1);
-  const pageSize = 5; // 한 페이지에 보여줄 리뷰 수
+  const pageSize = 30; // 한 페이지에 보여줄 리뷰 수
   const [showOverlay, setShowOverlay] = useState(false); // 오버레이 상태 관리
   const [activeReviewId, setActiveReviewId] = useState(null); // 현재 별점을 선택 중인 리뷰 ID
   const [loading, setLoading] = useState(false); // 로딩 상태 관리
+  const [maxPage, setMaxPage] = useState(1); // 최대 페이지 상태 관리
+
 
   useEffect(() => {
-    const fetchReviews = async () => {
-      // currentPage와 pageSize의 유효성을 항상 보장
-      const validPage = currentPage > 0 ? currentPage : 1;
-      const validSize = pageSize > 0 ? pageSize : 5;
-
-      try {
-        // API 호출
-        const response = await fetch(
-          `http://127.0.0.1:8080/api/review?page=${validPage}&size=${validSize}`
-        );
-
-        if (!response.ok) {
-          console.error("리뷰 데이터 가져오기 실패:", response.statusText);
-          return;
-        }
-
-        const data = await response.json();
-        setExistingReviews(data.reviews);
-        setMaxPage(data.pageinfo.maxPage); // 최대 페이지 수 설정
-      } catch (error) {
-        console.error("리뷰 API 호출 중 에러 발생:", error);
-      }
+    const loadInitialReviews = async () => {
+      await fetchReviews(1, 30);
     };
+  
+    loadInitialReviews();
+  }, []);
+  
+  useEffect(() => {
+    if (currentPage > 1) {
+      fetchReviews(currentPage, pageSize); 
+    }
+  }, [currentPage]);
+  
 
-    fetchReviews();
-  }, [currentPage]); // currentPage가 변경될 때마다 호출
+  const fetchReviews = async (page, size) => {
+    try {
+      const validPage = page > 0 ? page : 1;
+      const validSize = size > 0 ? size : pageSize; // 기본값은 pageSize
+  
+      const response = await fetch(
+        `http://127.0.0.1:8080/api/review?page=${validPage}&size=${validSize}`
+      );
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      setExistingReviews((prevReviews) => [...prevReviews, ...data.reviews]); // 기존 데이터에 추가
+      setMaxPage(data.pageinfo.maxPage); // 최대 페이지 업데이트
+    } catch (error) {
+      console.error("리뷰 데이터를 가져오는 중 오류:", error.message);
+    }
+  };
+  
 
   const postReview = async (reviewContents, userRatings = null) => {
     try {
