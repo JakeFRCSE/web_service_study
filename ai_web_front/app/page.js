@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./page.module.css";
 import Navi from "@/components/Navi";
 
@@ -16,37 +16,75 @@ const LandingPage = () => {
   const [loading, setLoading] = useState(false); // 로딩 상태 관리
   const [maxPage, setMaxPage] = useState(1); // 최대 페이지 상태 관리
 
+  const scrollContainerRef = useRef(null); // 스크롤 컨테이너 참조
 
   useEffect(() => {
     const loadInitialReviews = async () => {
-      await fetchReviews(1, 30);
+      await fetchReviews(currentPage, pageSize); // 초기 페이지 로드
     };
-  
+
     loadInitialReviews();
   }, []);
-  
+
   useEffect(() => {
-    if (currentPage > 1) {
-      fetchReviews(currentPage, pageSize); 
+    const handleScroll = async () => {
+      if (!scrollContainerRef.current || loading) {
+        console.log("Scroll handler skipped. Either no ref or loading.");
+        return;
+      }
+  
+      const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
+  
+      // 현재 스크롤 상태를 출력
+      console.log("Scroll Top:", scrollTop);
+      console.log("Scroll Height:", scrollHeight);
+      console.log("Client Height:", clientHeight);
+  
+      // 스크롤이 상단에 도달하면 이전 페이지 데이터 로드
+      if (scrollTop === 0 && currentPage < maxPage) {
+        console.log("Fetching previous page data...");
+        setLoading(true);
+        await fetchReviews(currentPage + 1, pageSize); // 이전 페이지 데이터 추가
+        setCurrentPage((prevPage) => prevPage + 1);
+        console.log("Page incremented to:", currentPage + 1);
+        setLoading(false);
+      } else {
+        console.log("No action taken.");
+      }
+    };
+  
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      console.log("Scroll event listener added.");
     }
-  }, [currentPage]);
+  
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+        console.log("Scroll event listener removed.");
+      }
+    };
+  }, [currentPage, maxPage, loading, pageSize]);
   
 
   const fetchReviews = async (page, size) => {
     try {
       const validPage = page > 0 ? page : 1;
       const validSize = size > 0 ? size : pageSize; // 기본값은 pageSize
-  
+
       const response = await fetch(
         `http://127.0.0.1:8080/api/review?page=${validPage}&size=${validSize}`
       );
-  
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-  
+
       const data = await response.json();
-      setExistingReviews((prevReviews) => [...prevReviews, ...data.reviews]); // 기존 데이터에 추가
+
+      // 새 리뷰를 상단에 추가
+      setExistingReviews((prevReviews) => [...data.reviews, ...prevReviews]);
       setMaxPage(data.pageinfo.maxPage); // 최대 페이지 업데이트
     } catch (error) {
       console.error("리뷰 데이터를 가져오는 중 오류:", error.message);
