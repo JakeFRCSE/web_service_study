@@ -32,14 +32,15 @@ const LandingPage = () => {
         console.log("Scroll handler skipped. Either no ref or loading.");
         return;
       }
-  
-      const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
-  
+
+      const { scrollTop, scrollHeight, clientHeight } =
+        scrollContainerRef.current;
+
       // 현재 스크롤 상태를 출력
       console.log("Scroll Top:", scrollTop);
       console.log("Scroll Height:", scrollHeight);
       console.log("Client Height:", clientHeight);
-  
+
       // 스크롤이 상단에 도달하면 이전 페이지 데이터 로드
       if (scrollTop === 0 && currentPage < maxPage) {
         console.log("Fetching previous page data...");
@@ -52,13 +53,13 @@ const LandingPage = () => {
         console.log("No action taken.");
       }
     };
-  
+
     const container = scrollContainerRef.current;
     if (container) {
       container.addEventListener("scroll", handleScroll);
       console.log("Scroll event listener added.");
     }
-  
+
     return () => {
       if (container) {
         container.removeEventListener("scroll", handleScroll);
@@ -66,7 +67,6 @@ const LandingPage = () => {
       }
     };
   }, [currentPage, maxPage, loading, pageSize]);
-  
 
   const fetchReviews = async (page, size) => {
     try {
@@ -90,7 +90,6 @@ const LandingPage = () => {
       console.error("리뷰 데이터를 가져오는 중 오류:", error.message);
     }
   };
-  
 
   const postReview = async (reviewContents, userRatings = null) => {
     try {
@@ -270,7 +269,7 @@ const LandingPage = () => {
       <Navi />
       <div className={styles.rectangle}></div>
 
-      <div className={styles.all_chatting_box}>
+      <div className={styles.all_chatting_box} ref={scrollContainerRef}>
         {/* 기존 리뷰 */}
         {existingReviews.map((review) => (
           <div key={review.id}>
