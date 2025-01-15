@@ -68,6 +68,14 @@ const LandingPage = () => {
     };
   }, [currentPage, maxPage, loading, pageSize]);
 
+  useEffect(() => {
+    // 새 리뷰가 추가되면 스크롤을 맨 아래로 이동
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      container.scrollTop = container.scrollHeight - container.clientHeight;
+    }
+  }, [newReviews]);
+
   const fetchReviews = async (page, size) => {
     try {
       const validPage = page > 0 ? page : 1;
