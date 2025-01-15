@@ -15,6 +15,7 @@ const LandingPage = () => {
   const [activeReviewId, setActiveReviewId] = useState(null); // 현재 별점을 선택 중인 리뷰 ID
   const [loading, setLoading] = useState(false); // 로딩 상태 관리
   const [maxPage, setMaxPage] = useState(1); // 최대 페이지 상태 관리
+  const [hoveredIndex, setHoveredIndex] = useState(-1);
 
   const scrollContainerRef = useRef(null); // 스크롤 컨테이너 참조
 
@@ -264,7 +265,10 @@ const LandingPage = () => {
       console.error("예측 상태 확인 중 에러:", error);
       setLoading(false);
     }
+  
   };
+
+  
 
   return (
     <div className={styles.Container}>
@@ -362,15 +366,15 @@ const LandingPage = () => {
             {Array.from({ length: 5 }, (_, i) => (
               <img
                 key={i}
-                src="/empty_star.svg"
+                src={
+                  i <= hoveredIndex ? "/yellow_star.svg" : "/empty_star.svg"
+                }
                 width="24"
                 height="24"
                 alt="star"
-                onClick={() => {
-                  handleRatingSubmit(i + 1); // 별점 선택
-                }}
-                onMouseEnter={(e) => (e.target.src = "/yellow_star.svg")}
-                onMouseLeave={(e) => (e.target.src = "/empty_star.svg")}
+                onClick={() => handleRatingSubmit(i + 1)}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(-1)}
               />
             ))}
           </div>
