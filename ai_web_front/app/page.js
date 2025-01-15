@@ -304,17 +304,24 @@ const LandingPage = () => {
         {newReviews.map((review) => (
           <div key={review.id} className={styles.chatRow2}>
             <div className={styles.starRating}>
-              {Array.from({ length: 5 }, (_, i) => (
-                <img
-                  key={i}
-                  src={
-                    i < review.modelRatings
-                      ? "/yellow_star.svg"
-                      : "/empty_star.svg"
-                  }
-                  alt="star"
-                />
-              ))}
+              {review.modelRatings !== null ? (
+                // modelRatings 값이 있는 경우 별점 출력
+                Array.from({ length: 5 }, (_, i) => (
+                  <img
+                    key={i}
+                    src={
+                      i < review.modelRatings
+                        ? "/yellow_star.svg"
+                        : "/empty_star.svg"
+                    }
+                    alt="star"
+                  />
+                ))
+              ) : (
+                // modelRatings 값이 null이거나 없는 경우 spinner 출력
+                <div className={styles.spinner}>
+                </div>
+              )}
             </div>
             <p className={styles.newReview}>{review.reviewContents}</p>
           </div>
@@ -328,9 +335,6 @@ const LandingPage = () => {
             실제로 남길 별점을 입력해주세요. 차후 학습에 이용됩니다.
           </div>
         )}
-
-        {/* 로딩 상태 표시 */}
-        {loading && <div className={styles.loading}>로딩 중...</div>}
 
         <textarea
           className={styles.input}
