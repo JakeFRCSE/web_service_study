@@ -133,6 +133,7 @@
   border-radius: 8px;
   border: 1px solid #bebebe;
   margin-left: 8px;
+  resize: none;
 }
 
 .Upload {
