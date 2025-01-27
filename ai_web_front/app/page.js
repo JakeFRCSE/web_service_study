@@ -28,6 +28,14 @@ const LandingPage = () => {
   }, []);
 
   useEffect(() => {
+    // 첫 로딩 또는 새 리뷰가 추가되면 스크롤을 맨 아래로 이동
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      container.scrollTop = container.scrollHeight - container.clientHeight;
+    }
+  }, [existingReviews, newReviews]);
+
+  useEffect(() => {
     const handleScroll = async () => {
       if (!scrollContainerRef.current || loading) {
         console.log("Scroll handler skipped. Either no ref or loading.");
@@ -68,14 +76,6 @@ const LandingPage = () => {
       }
     };
   }, [currentPage, maxPage, loading, pageSize]);
-
-  useEffect(() => {
-    // 새 리뷰가 추가되면 스크롤을 맨 아래로 이동
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      container.scrollTop = container.scrollHeight - container.clientHeight;
-    }
-  }, [newReviews]);
 
   const fetchReviews = async (page, size) => {
     try {
@@ -265,10 +265,7 @@ const LandingPage = () => {
       console.error("예측 상태 확인 중 에러:", error);
       setLoading(false);
     }
-  
   };
-
-  
 
   return (
     <div className={styles.Container}>
@@ -284,13 +281,13 @@ const LandingPage = () => {
       <div className={styles.all_chatting_box} ref={scrollContainerRef}>
         {/* 기존 리뷰 */}
         {existingReviews.map((review) => (
-          <div key={review.id}>
+          <div key={`existingReview-${review.id}`}>
             <div className={styles.chatRow}>
               <p className={styles.oldReview}>{review.reviewContents}</p>
               <div className={styles.starRating}>
                 {Array.from({ length: 5 }, (_, i) => (
                   <img
-                    key={i}
+                    key={`existingReview-${review.id}-star-${i}`}
                     src={
                       i < review.modelRatings
                         ? "/yellow_star.svg"
@@ -306,13 +303,13 @@ const LandingPage = () => {
 
         {/* 새로 작성된 리뷰 */}
         {newReviews.map((review) => (
-          <div key={review.id} className={styles.chatRow2}>
+          <div key={`newReview-${review.id}`} className={styles.chatRow2}>
             <div className={styles.starRating}>
               {review.modelRatings !== null ? (
                 // modelRatings 값이 있는 경우 별점 출력
                 Array.from({ length: 5 }, (_, i) => (
                   <img
-                    key={i}
+                    key={`newReview-${review.id}-star-${i}`}
                     src={
                       i < review.modelRatings
                         ? "/yellow_star.svg"
@@ -323,8 +320,7 @@ const LandingPage = () => {
                 ))
               ) : (
                 // modelRatings 값이 null이거나 없는 경우 spinner 출력
-                <div className={styles.spinner}>
-                </div>
+                <div className={styles.spinner}></div>
               )}
             </div>
             <p className={styles.newReview}>{review.reviewContents}</p>
@@ -365,10 +361,8 @@ const LandingPage = () => {
           <div className={styles.starRatingSelect}>
             {Array.from({ length: 5 }, (_, i) => (
               <img
-                key={i}
-                src={
-                  i <= hoveredIndex ? "/yellow_star.svg" : "/empty_star.svg"
-                }
+                key={`selectStar-${i}`}
+                src={i <= hoveredIndex ? "/yellow_star.svg" : "/empty_star.svg"}
                 width="24"
                 height="24"
                 alt="star"
