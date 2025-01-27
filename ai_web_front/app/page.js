@@ -5,8 +5,8 @@ import styles from "./page.module.css";
 import Navi from "@/components/Navi";
 
 const LandingPage = () => {
-  const [existingReviews, setExistingReviews] = useState([]);
-  const [newReviews, setNewReviews] = useState([]); // 새로 작성된 리뷰
+  const LOCALSTORAGE_KEY = "myReview";
+  const [reviews, setReviews] = useState([]);
   const [inputText, setInputText] = useState(""); // 입력한 텍스트 상태 관리
   const [isRating, setIsRating] = useState(false); // 별점 선택 UI 상태 관리
   const [currentPage, setCurrentPage] = useState(1); // 기본값 1
@@ -33,7 +33,7 @@ const LandingPage = () => {
       const container = scrollContainerRef.current;
       container.scrollTop = container.scrollHeight - container.clientHeight;
     }
-  }, [existingReviews, newReviews]);
+  }, [reviews]);
 
   useEffect(() => {
     const handleScroll = async () => {
@@ -92,8 +92,16 @@ const LandingPage = () => {
 
       const data = await response.json();
 
+      const myReviews = new Set(
+        JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))
+      );
+      const fetchedData = data.reviews.map((review) => ({
+        ...review,
+        isMyReview: myReviews.has(review.id),
+      }));
+
       // 새 리뷰를 상단에 추가
-      setExistingReviews((prevReviews) => [...data.reviews, ...prevReviews]);
+      setReviews((prevReviews) => [...fetchedData, ...prevReviews]);
       setMaxPage(data.pageinfo.maxPage); // 최대 페이지 업데이트
     } catch (error) {
       console.error("리뷰 데이터를 가져오는 중 오류:", error.message);
@@ -178,9 +186,10 @@ const LandingPage = () => {
       reviewContents: inputText.trim(),
       userRatings: null, // 별점은 아직 선택되지 않음
       modelRatings: null, // 모델 별점 초기화
+      isMyReview: true,
     };
 
-    setNewReviews((prevReviews) => [...prevReviews, tempReview]);
+    setReviews((prevReviews) => [...prevReviews, tempReview]);
     setInputText(""); // 입력 필드 초기화
     setIsRating(true); // 별점 입력 활성화
     setActiveReviewId(tempReview.id); // 별점 선택 중인 리뷰 ID 저장
@@ -197,10 +206,10 @@ const LandingPage = () => {
     setLoading(true); // 로딩 상태 활성화
 
     // 리뷰 데이터 업데이트
-    const updatedReviews = newReviews.map((review) =>
+    const updatedReviews = reviews.map((review) =>
       review.id === activeReviewId ? { ...review, userRatings: rating } : review
     );
-    setNewReviews(updatedReviews);
+    setReviews(updatedReviews);
 
     // 서버에 리뷰 전송
     const reviewToSubmit = updatedReviews.find(
@@ -216,16 +225,31 @@ const LandingPage = () => {
     try {
       const newReview = await postReview(reviewToSubmit.reviewContents, rating);
 
-      // 리뷰 데이터 업데이트
-      const updatedReviews = newReviews.map((review) =>
-        review.id === activeReviewId ? { ...review, id: newReview.id } : review
-      );
-      setNewReviews(updatedReviews);
-
       if (!newReview) {
         console.error("리뷰 등록 실패");
         setLoading(false);
         return;
+      }
+
+      // 리뷰 데이터 업데이트
+      const updatedReviews = reviews.map((review) =>
+        review.id === activeReviewId ? { ...review, id: newReview.id } : review
+      );
+      setReviews(updatedReviews);
+      const storage = localStorage.getItem(LOCALSTORAGE_KEY);
+      if (storage) {
+        const myReviews = new Set(JSON.parse(storage));
+        myReviews.add(newReview.id);
+        localStorage.setItem(
+          LOCALSTORAGE_KEY,
+          JSON.stringify(Array.from(myReviews))
+        );
+      } else {
+        const myReviews = new Set([newReview.id]);
+        localStorage.setItem(
+          LOCALSTORAGE_KEY,
+          JSON.stringify(Array.from(myReviews))
+        );
       }
 
       // 상태 확인 함수
@@ -237,7 +261,7 @@ const LandingPage = () => {
             // 상태가 완료되면 결과 가져오기
             const result = await fetchReviewPrediction(newReview.id);
             if (result) {
-              setNewReviews((prevReviews) =>
+              setReviews((prevReviews) =>
                 prevReviews.map((review) => {
                   return review.id === newReview.id
                     ? { ...review, modelRatings: result.modelRatings }
@@ -279,53 +303,52 @@ const LandingPage = () => {
       <div className={styles.rectangle}></div>
 
       <div className={styles.all_chatting_box} ref={scrollContainerRef}>
-        {/* 기존 리뷰 */}
-        {existingReviews.map((review) => (
-          <div key={`existingReview-${review.id}`}>
-            <div className={styles.chatRow}>
-              <p className={styles.oldReview}>{review.reviewContents}</p>
+        {reviews.map((review) =>
+          review.isMyReview ? (
+            /* 새로 작성된 리뷰 */
+            <div key={`newReview-${review.id}`} className={styles.chatRow2}>
               <div className={styles.starRating}>
-                {Array.from({ length: 5 }, (_, i) => (
-                  <img
-                    key={`existingReview-${review.id}-star-${i}`}
-                    src={
-                      i < review.modelRatings
-                        ? "/yellow_star.svg"
-                        : "/empty_star.svg"
-                    }
-                    alt="star"
-                  />
-                ))}
+                {review.modelRatings !== null ? (
+                  // modelRatings 값이 있는 경우 별점 출력
+                  Array.from({ length: 5 }, (_, i) => (
+                    <img
+                      key={`newReview-${review.id}-star-${i}`}
+                      src={
+                        i < review.modelRatings
+                          ? "/yellow_star.svg"
+                          : "/empty_star.svg"
+                      }
+                      alt="star"
+                    />
+                  ))
+                ) : (
+                  // modelRatings 값이 null이거나 없는 경우 spinner 출력
+                  <div className={styles.spinner}></div>
+                )}
+              </div>
+              <p className={styles.newReview}>{review.reviewContents}</p>
+            </div>
+          ) : (
+            /* 기존 리뷰 */ <div key={`existingReview-${review.id}`}>
+              <div className={styles.chatRow}>
+                <p className={styles.oldReview}>{review.reviewContents}</p>
+                <div className={styles.starRating}>
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <img
+                      key={`existingReview-${review.id}-star-${i}`}
+                      src={
+                        i < review.modelRatings
+                          ? "/yellow_star.svg"
+                          : "/empty_star.svg"
+                      }
+                      alt="star"
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-
-        {/* 새로 작성된 리뷰 */}
-        {newReviews.map((review) => (
-          <div key={`newReview-${review.id}`} className={styles.chatRow2}>
-            <div className={styles.starRating}>
-              {review.modelRatings !== null ? (
-                // modelRatings 값이 있는 경우 별점 출력
-                Array.from({ length: 5 }, (_, i) => (
-                  <img
-                    key={`newReview-${review.id}-star-${i}`}
-                    src={
-                      i < review.modelRatings
-                        ? "/yellow_star.svg"
-                        : "/empty_star.svg"
-                    }
-                    alt="star"
-                  />
-                ))
-              ) : (
-                // modelRatings 값이 null이거나 없는 경우 spinner 출력
-                <div className={styles.spinner}></div>
-              )}
-            </div>
-            <p className={styles.newReview}>{review.reviewContents}</p>
-          </div>
-        ))}
+          )
+        )}
       </div>
 
       <div className={styles.inputContainer}>
