@@ -21,13 +21,29 @@ const LandingPage = () => {
 
   useEffect(() => {
     const loadInitialReviews = async () => {
-      await fetchReviews(currentPage, pageSize); // 초기 페이지 로드
+      const newMaxPage = await getMaxPage(pageSize);
+      console.log(newMaxPage);
+      setMaxPage(newMaxPage);
+      setCurrentPage(newMaxPage);
+      await fetchReviews(newMaxPage, pageSize);
     };
 
     loadInitialReviews();
   }, []);
 
   useEffect(() => {
+    // 첫 로딩에 받아온 리뷰가 화면을 꽉 채우지 않으면 다음 페이지 로딩 진행
+    if (
+      scrollContainerRef.current &&
+      maxPage === currentPage &&
+      reviews.length
+    ) {
+      const container = scrollContainerRef.current;
+      if ((container.scrollHeight, container.clientHeight)) {
+        fetchNextPage();
+      }
+    }
+
     // 첫 로딩 또는 새 리뷰가 추가되면 스크롤을 맨 아래로 이동
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
@@ -35,47 +51,54 @@ const LandingPage = () => {
     }
   }, [reviews]);
 
-  useEffect(() => {
-    const handleScroll = async () => {
-      if (!scrollContainerRef.current || loading) {
-        console.log("Scroll handler skipped. Either no ref or loading.");
-        return;
-      }
+  const fetchNextPage = async () => {
+    console.log("Fetching previous page data...");
+    setLoading(true);
+    const newPage = currentPage - 1;
+    await fetchReviews(newPage, pageSize); // 이전 페이지 데이터 추가
+    setCurrentPage(newPage);
+    console.log("Page decremented to:", newPage);
+    setLoading(false);
+  };
 
-      const { scrollTop, scrollHeight, clientHeight } =
-        scrollContainerRef.current;
-
-      // 현재 스크롤 상태를 출력
-      console.log("Scroll Top:", scrollTop);
-      console.log("Scroll Height:", scrollHeight);
-      console.log("Client Height:", clientHeight);
-
-      // 스크롤이 상단에 도달하면 이전 페이지 데이터 로드
-      if (scrollTop === 0 && currentPage < maxPage) {
-        console.log("Fetching previous page data...");
-        setLoading(true);
-        await fetchReviews(currentPage + 1, pageSize); // 이전 페이지 데이터 추가
-        setCurrentPage((prevPage) => prevPage + 1);
-        console.log("Page incremented to:", currentPage + 1);
-        setLoading(false);
-      } else {
-        console.log("No action taken.");
-      }
-    };
-
-    const container = scrollContainerRef.current;
-    if (container) {
-      container.addEventListener("scroll", handleScroll);
-      console.log("Scroll event listener added.");
+  const handleScroll = async () => {
+    if (!scrollContainerRef.current || loading) {
+      console.log("Scroll handler skipped. Either no ref or loading.");
+      return;
     }
 
-    return () => {
-      if (container) {
-        container.removeEventListener("scroll", handleScroll);
-        console.log("Scroll event listener removed.");
-      }
-    };
-  }, [currentPage, maxPage, loading, pageSize]);
+    const { scrollTop, scrollHeight, clientHeight } =
+      scrollContainerRef.current;
+
+    // 현재 스크롤 상태를 출력
+    console.log("Scroll Top:", scrollTop);
+    console.log("Scroll Height:", scrollHeight);
+    console.log("Client Height:", clientHeight);
+
+    // 스크롤이 상단에 도달하면 이전 페이지 데이터 로드
+    if (scrollTop <= 150 && 1 < currentPage) {
+      fetchNextPage();
+    } else {
+      console.log("No action taken.");
+    }
+  };
+
+  const getMaxPage = async (size) => {
+    if (size <= 0) {
+      throw Error("size는 1 이상의 값이어야 합니다.");
+    }
+
+    const response = await fetch(
+      `http://127.0.0.1:8080/api/review?page=1&size=${size}`
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.pageinfo;
+  };
 
   const fetchReviews = async (page, size) => {
     try {
@@ -102,7 +125,6 @@ const LandingPage = () => {
 
       // 새 리뷰를 상단에 추가
       setReviews((prevReviews) => [...fetchedData, ...prevReviews]);
-      setMaxPage(data.pageinfo.maxPage); // 최대 페이지 업데이트
     } catch (error) {
       console.error("리뷰 데이터를 가져오는 중 오류:", error.message);
     }
@@ -302,7 +324,11 @@ const LandingPage = () => {
       <Navi />
       <div className={styles.rectangle}></div>
 
-      <div className={styles.all_chatting_box} ref={scrollContainerRef}>
+      <div
+        className={styles.all_chatting_box}
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+      >
         {reviews.map((review) =>
           review.isMyReview ? (
             /* 새로 작성된 리뷰 */
