@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./page.module.css";
-import Navi from "@/components/Navi";
 
 const LandingPage = () => {
   const LOCALSTORAGE_KEY = "myReview";
@@ -315,14 +314,15 @@ const LandingPage = () => {
 
   return (
     <div className={styles.Container}>
-      <div className={styles.semi_content}>
-        가장 최근에 다녀왔던 맥도날드의 리뷰를 영어로 남겨보세요!
+      <div className={styles.description_box}>
+        <div className={styles.semi_content}>
+          가장 최근에 다녀왔던 맥도날드의 리뷰를 영어로 남겨보세요!
+        </div>
+        <div className={styles.semi_content_2}>
+          AI가 당신이 남길 별점을 예측해드립니다.
+        </div>
+        <div className={styles.rectangle} />
       </div>
-      <div className={styles.semi_content_2}>
-        AI가 당신이 남길 별점을 예측해드립니다.
-      </div>
-      <Navi />
-      <div className={styles.rectangle}></div>
 
       <div
         className={styles.all_chatting_box}
