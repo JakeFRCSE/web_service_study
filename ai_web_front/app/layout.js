@@ -1,13 +1,14 @@
+import Navi from "@/components/Navi";
 import "./globals.css";
-import { Baloo_Bhai_2, Noto_Sans_KR } from 'next/font/google';
+import { Baloo_Bhai_2, Noto_Sans_KR } from "next/font/google";
 
 const notoSansKr = Noto_Sans_KR({
-  subsets: ['latin'],
-  variable: '--NotoSans'
+  subsets: ["latin"],
+  variable: "--NotoSans",
 });
 const balooBhai = Baloo_Bhai_2({
-  subsets: ['latin'],
-  variable: '--Baloo',
+  subsets: ["latin"],
+  variable: "--Baloo",
 });
 
 export const metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${notoSansKr.variable} ${balooBhai.variable}`}>
+        <Navi />
         {children}
       </body>
     </html>
