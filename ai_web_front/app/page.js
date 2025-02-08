@@ -12,6 +12,7 @@ const LandingPage = () => {
   const pageSize = 30; // 한 페이지에 보여줄 리뷰 수
   const [showOverlay, setShowOverlay] = useState(false); // 오버레이 상태 관리
   const [activeReviewId, setActiveReviewId] = useState(null); // 현재 별점을 선택 중인 리뷰 ID
+  const [inited, setInited] = useState(false);
   const [loading, setLoading] = useState(false); // 로딩 상태 관리
   const [maxPage, setMaxPage] = useState(1); // 최대 페이지 상태 관리
   const [hoveredIndex, setHoveredIndex] = useState(-1);
@@ -21,20 +22,21 @@ const LandingPage = () => {
   useEffect(() => {
     const loadInitialReviews = async () => {
       const newMaxPage = await getMaxPage(pageSize);
-      console.log(newMaxPage);
       setMaxPage(newMaxPage);
       setCurrentPage(newMaxPage);
+      setInited(true);
       await fetchReviews(newMaxPage, pageSize);
     };
 
-    loadInitialReviews();
-  }, []);
+    if (!inited) loadInitialReviews();
+  }, [inited]);
 
   useEffect(() => {
     // 첫 로딩에 받아온 리뷰가 화면을 꽉 채우지 않으면 다음 페이지 로딩 진행
     if (
       scrollContainerRef.current &&
       maxPage === currentPage &&
+      1 < currentPage &&
       reviews.length
     ) {
       const container = scrollContainerRef.current;
@@ -51,18 +53,18 @@ const LandingPage = () => {
   }, [reviews]);
 
   const fetchNextPage = async () => {
-    console.log("Fetching previous page data...");
+    // console.log("Fetching previous page data...");
     setLoading(true);
     const newPage = currentPage - 1;
     await fetchReviews(newPage, pageSize); // 이전 페이지 데이터 추가
     setCurrentPage(newPage);
-    console.log("Page decremented to:", newPage);
+    // console.log("Page decremented to:", newPage);
     setLoading(false);
   };
 
   const handleScroll = async () => {
     if (!scrollContainerRef.current || loading) {
-      console.log("Scroll handler skipped. Either no ref or loading.");
+      // console.log("Scroll handler skipped. Either no ref or loading.");
       return;
     }
 
@@ -70,15 +72,15 @@ const LandingPage = () => {
       scrollContainerRef.current;
 
     // 현재 스크롤 상태를 출력
-    console.log("Scroll Top:", scrollTop);
-    console.log("Scroll Height:", scrollHeight);
-    console.log("Client Height:", clientHeight);
+    // console.log("Scroll Top:", scrollTop);
+    // console.log("Scroll Height:", scrollHeight);
+    // console.log("Client Height:", clientHeight);
 
     // 스크롤이 상단에 도달하면 이전 페이지 데이터 로드
     if (scrollTop <= 150 && 1 < currentPage) {
       fetchNextPage();
     } else {
-      console.log("No action taken.");
+      // console.log("No action taken.");
     }
   };
 
@@ -123,6 +125,7 @@ const LandingPage = () => {
       }));
 
       // 새 리뷰를 상단에 추가
+      // console.log("fetchReviews");
       setReviews((prevReviews) => [...fetchedData, ...prevReviews]);
     } catch (error) {
       console.error("리뷰 데이터를 가져오는 중 오류:", error.message);
@@ -148,7 +151,7 @@ const LandingPage = () => {
       }
 
       const data = await response.json();
-      console.log("등록된 리뷰 데이터:", data);
+      // console.log("등록된 리뷰 데이터:", data);
       return data; // 등록된 리뷰 반환
     } catch (error) {
       console.error("API 호출 중 에러 발생:", error);
@@ -167,7 +170,7 @@ const LandingPage = () => {
       }
 
       const data = await response.json();
-      console.log("예측 상태:", data);
+      // console.log("예측 상태:", data);
       return data; // 예측 상태 반환
     } catch (error) {
       console.error("예측 상태 API 호출 중 오류:", error);
@@ -187,7 +190,7 @@ const LandingPage = () => {
       }
 
       const data = await response.json();
-      console.log("모델 연산 결과:", data);
+      // console.log("모델 연산 결과:", data);
       return data; // 모델 결과 반환
     } catch (error) {
       console.error("모델 결과 API 호출 중 오류:", error);
@@ -289,13 +292,13 @@ const LandingPage = () => {
                     : review;
                 })
               );
-              console.log(
-                `AI 예측 별점: ${result.modelRatings} (ID: ${newReview.id})`
-              );
+              // console.log(
+              //   `AI 예측 별점: ${result.modelRatings} (ID: ${newReview.id})`
+              // );
             }
             setLoading(false); // 로딩 상태 비활성화
           } else {
-            console.log("예측 진행 중... 2초 후 다시 확인합니다.");
+            // console.log("예측 진행 중... 2초 후 다시 확인합니다.");
             setTimeout(checkStatusAndFetchResult, 2000); // 2초 후 재확인
           }
         } catch (error) {
@@ -329,6 +332,7 @@ const LandingPage = () => {
         ref={scrollContainerRef}
         onScroll={handleScroll}
       >
+        <div className={styles.paddingRow} />
         {reviews.map((review) =>
           review.isMyReview ? (
             /* 새로 작성된 리뷰 */
@@ -377,51 +381,55 @@ const LandingPage = () => {
         )}
       </div>
 
-      <div className={styles.inputContainer}>
+      <div className={styles.InputWrapper}>
         {/* 오버레이 */}
         {showOverlay && (
           <div className={styles.overlay}>
             실제로 남길 별점을 입력해주세요. 차후 학습에 이용됩니다.
           </div>
         )}
+        <div className={styles.inputContainer}>
+          <textarea
+            className={styles.input}
+            type="text"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)} // 입력 값 업데이트
+          ></textarea>
 
-        <textarea
-          className={styles.input}
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)} // 입력 값 업데이트
-        ></textarea>
-
-        {!isRating ? (
-          // 별점 선택 모드가 비활성화된 경우
-          <button
-            className={styles.Upload}
-            onClick={() => {
-              // 별점 선택 모드 활성화
-              setIsRating(true);
-              setShowOverlay(true); // 오버레이 활성화
-              handleReviewSubmit(); // 리뷰 제출 함수 호출
-            }}
-          >
-            <img src="/send.svg" width="14" height="12" alt="send" />
-          </button>
-        ) : (
-          // 별점 선택 UI
-          <div className={styles.starRatingSelect}>
-            {Array.from({ length: 5 }, (_, i) => (
-              <img
-                key={`selectStar-${i}`}
-                src={i <= hoveredIndex ? "/yellow_star.svg" : "/empty_star.svg"}
-                width="24"
-                height="24"
-                alt="star"
-                onClick={() => handleRatingSubmit(i + 1)}
-                onMouseEnter={() => setHoveredIndex(i)}
-                onMouseLeave={() => setHoveredIndex(-1)}
-              />
-            ))}
-          </div>
-        )}
+          {!isRating ? (
+            // 별점 선택 모드가 비활성화된 경우
+            <button
+              className={styles.Upload}
+              disabled={!inputText.length}
+              onClick={() => {
+                // 별점 선택 모드 활성화
+                setIsRating(true);
+                setShowOverlay(true); // 오버레이 활성화
+                handleReviewSubmit(); // 리뷰 제출 함수 호출
+              }}
+            >
+              <img src="/send.svg" width="14" height="12" alt="send" />
+            </button>
+          ) : (
+            // 별점 선택 UI
+            <div className={styles.starRatingSelect}>
+              {Array.from({ length: 5 }, (_, i) => (
+                <img
+                  key={`selectStar-${i}`}
+                  src={
+                    i <= hoveredIndex ? "/yellow_star.svg" : "/empty_star.svg"
+                  }
+                  width="24"
+                  height="24"
+                  alt="star"
+                  onClick={() => handleRatingSubmit(i + 1)}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(-1)}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
