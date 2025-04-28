@@ -396,11 +396,11 @@ Refer to the documentation for each area:
  - [Back-End 실행 -1-](./documents/week5/Django_Install_and_Setting.md)
  - [Back-End 실행 -2-](./documents/week6/RESTAPI_구현-1-.md)
 
-5. Team Introduction
+### 5. Team Introduction
 
 > Introduce team members & role distribution per member & write down simple contact information.
 
-#### Hungry People
+#### 🍱 Hungry People
 
 | 이동훈 | 조현성 | 안소희 |
 |:-------:|:-------:|:-------:|
