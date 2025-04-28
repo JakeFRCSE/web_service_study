@@ -1,3 +1,5 @@
+[[Kor]](#readmemd-가이드라인) [[Eng]](#readmemd-guidelines)
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/T3QcP9pQ)
 
 
@@ -198,3 +200,216 @@ docker-compose up --build -d
 |<a href="https://github.com/JakeFRCSE"><img width="100px" alt="박준혁" src="https://avatars.githubusercontent.com/u/162955476?v=4" /></a> | <a href="https://github.com/sanghunii"><img width="100px" alt="박상훈" src="https://avatars.githubusercontent.com/u/152972679?v=4" /></a>| <a href="https://github.com/Karryun"><img width="100px" alt="곽도연" src="https://avatars.githubusercontent.com/u/165464282?v=4" /></a> |
 | eppi001004@gmail.com | sanghoon556@pusan.ac.kr |gdy0210@pusan.ac.kr |
 | 백엔드 개발 | 백엔드 개발 | 프론트엔드 개발 |
+
+[[Kor]](#readmemd-가이드라인) [[Eng]](#readmemd-guidelines)
+
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/T3QcP9pQ)
+
+## README.md Guidelines
+- When writing the README file, the content of the following 5 items must be included.
+- You may add content beyond the following 7 items to help understand the project.
+- Refer to `SAMPLE_README.md` as it is a simple example.
+
+### 1. Project Introduction
+#### 1.1. Development Background and Necessity
+A `McDonald's Review Data Star Rating Prediction` competition was held within AID (AI Club of the Department of Information and Computer Engineering). A model was developed that predicts the star rating of a review when given the review text (in English) for a McDonald's store. The purpose is to deploy this developed model as a web service so it can be demonstrated. This toy project was started because there was a need for an environment where anyone could try out the model, rather than it being just a one-time creation for the competition.
+
+#### 1.2. Development Goals and Main Content
+The goal is to study and experience the entire process of deploying a program that predicts the star rating a user would give based on their English review of a McDonald's store. Through this toy project, the aim is to study how web technologies and PyTorch models can be integrated, and ultimately acquire the ability to create environments where anyone can easily use AI models, moving beyond just training models and using them in a Python environment.
+
+#### 1.3. Detailed Content
+- Frontend: Prompt system using Next.JS
+- Backend: AI model API using Django + PyTorch, Django <-DB-> SQLite
+- AI: AI model tuning and instantiation
+  - Hardware performance such as memory, CPU, etc., seems necessary for the AI model.
+  - Designing the PyTorch model to operate asynchronously with the Django app is important.
+
+#### 1.4. Weekly Plan and Progress
+
+(As of 2024-11-27)
+[![image](https://github.com/user-attachments/assets/2e3604b0-7d03-4216-a52a-c100817d2ce5)](https://aeolian-arch-69e.notion.site/12b7102ef97780f287b4e18be2041cc1?v=3907530821de471d91c949cfe7f19a53)
+
+- **F**: Front-End
+- **B**: Back-End
+- **A**: AI & PyTorch
+
+| Week | Keyword | Plan | Progress |
+|:-------:|:-------:|:-------:|:-------:|
+| Week 1 | React | Web Basics Study **F** <br> React Study **F** | 1. [HTML, CSS, JS](./documents/week1/Web%20Basic.md) <br> 2. [React](https://www.notion.so/React-5d06778aa9b541d8ba95270fd4db5591) |
+| Week 2 | HTTP <br> Figma | HTTP-based API Study **F,B,A** <br> Design Wireframe with Figma **F** | 1. [HTTP-based API](https://www.notion.so/HTTP-API-64249f434f934fb3a7da7c9062b9fad3) <br> 2. [Figma Wireframe](./documents/week2/Figma%20Wireframe.md) |
+| Week 3 | Django <br> REST API | Django Basics Study **B,A** <br> Django REST Framework Study **B,A** | 1. [Django](./documents/week3/django/django%20basic.md) <br> 2-1. [Django ↔ React Integration](./documents/week3/django-react%20연동/django-react%20연동.md)<br> 2-2. [django-rest-framework](./documents/week3/djangoRestFramework/djangoRESTframework.md) |
+| Week 4 | PyTorch <br> Next.js <br> DB | PyTorch Basics Study **A** <br> Build UI with Next.js -1- **F** <br> DB (PostgreSQL) Study **B** | 1. [PyTorch Basic](./documents/week4/Pytorch%20Basic.md) <br> 2. [Next.js UI](./documents/week4/NextJS_Create_the_UI.md) <br> 3. [Database](./documents/week4/DataBase.md) |
+| Week 5 | PyTorch <br> Next.js <br> Django, REST API | Process PyTorch Model -1- **A** <br> Build UI with Next.js -2- **F** <br> Create API Specification & DB ERD **B,A** | 1. [Process PyTorch Model](./documents/week5/Modularzation_ipynbToPy.md) <br> 2. [Next.js UI](./documents/week4/NextJS_Create_the_UI.md) <br> 3-0. [Django Environment Setup](./documents/week5/Django_Install_and_Setting.md) <br> 3-1. [Create API Specification](./documents/week5/API_Document.md) |
+| Week 6 | PyTorch <br> Next.js <br> Django, REST API | Process PyTorch Model -2- **A** <br> Build UX with Next.js -1- **F** <br> Implement REST API -1- **B** | 1. [Process PyTorch Model](./documents/week5/Modularzation_ipynbToPy.md) <br> 2. Next.js UX <br> 3. [Implement REST API -1-](./documents/week6/RESTAPI_구현-1-.md) |
+| Week 7 | PyTorch <br> Next.js <br> Django, REST API | PyTorch Model API Serving **A** <br> Build UX with Next.js -2- **F** <br> Implement REST API -2- **B** | 1. [Torch Model API Serving](./ai-web-back/api/tasks.py) <br> 2. Next.js UX <br> 3. [Implement REST API -2-](./documents/week7/RESTAPI_구현-2-.md) |
+| Week 8 | PyTorch <br> Next.js <br> Django, REST API | Integration Testing and Debugging -1- **F,B,A** | - |
+| Week 9 | PyTorch <br> Next.js <br> Django, REST API | Integration Testing and Debugging -2- **F,B,A** | - |
+| Week 10 | Docker | Build Infrastructure with Docker | 1. [Configure Docker](./documents/week10/docker.md) |
+| Week 11 | AWS | Service Deployment | Not progressed due to cost issues <br> Scheduled for deployment |
+
+### 2. Detailed Design
+#### 2.1. System Architecture Diagram
+![System Diagram](/documents/README_img/System_Diagram.png)
+
+#### 2.2. Technologies Used
+
+- Frontend
+  ```text
+    Node.js v20.18.0
+
+    "dependencies": {
+      "react": "19.0.0-rc-69d4b800-20241021",
+      "react-dom": "19.0.0-rc-69d4b800-20241021",
+      "next": "15.0.1"
+    }
+  ```
+- Backend (pip_requirements.txt)
+```text
+  Python 3.11.4
+  celery==5.4.0
+  Django==5.1
+  django-cors-headers==4.6.0
+  djangorestframework==3.15.2
+  gevent==24.11.1
+  lightning==2.4.0
+  redis==5.2.0
+  torch==2.5.1
+  transformers==4.46.3
+```
+
+- Infra
+  ```text
+  Docker
+  ```
+
+### 3. Development Results
+
+#### 3.1. Overall System Flowchart
+![FrontEnd Flow](./documents/week2/img/Figma_v2.png)
+#### 3.2. Feature Description
+
+The service consists of a single page.
+
+- Enter Review
+  - The user enters a review and then inputs the star rating they would actually give (the rating the AI needs to predict).
+- Wait for AI Calculation
+  - Wait until the AI's calculation is complete.
+- Check AI's Predicted Star Rating
+  - Load and check the star rating the user would give predicted by the AI based on the user's input review text.
+#### 3.3. Functional Specification
+
+- Front End WireFrame: [Figma Link](https://www.figma.com/design/W0H8nZWsKPx3kqhnuEPOg0/AI-Web-Study?node-id=0-1&t=919RrO8ZHoLmXY23-1)
+- System Diagram: [Figma Link](https://www.figma.com/design/W0H8nZWsKPx3kqhnuEPOg0/AI-Web-Study?node-id=18-7&t=919RrO8ZHoLmXY23-1)
+- API Docs: [Notion Link](https://aeolian-arch-69e.notion.site/1317102ef97780119d9ccd079265e578?v=f37d9ae956b942a2b17f77175503c141)
+- ERD, replaced with an image as it consists of a single table ![Database ERD](./documents/README_img/ERD.png)
+
+#### 3.4. Directory Structure
+- Root ('GROUP-11')
+```shell
+📁 ┬ 📁.github # Files related to Github repository settings
+🔹 ├ 📁ai_web_front # Next.js folder responsible for FrontEnd
+🔹 ├ 📁ai-web-back # Django folder responsible for BackEnd
+🔹 ├ 📁documents # Various document files linked with README.md
+🔹 ├ 📁notice # Folder for PNU study group notice files
+🔹 ├ ⚙️.env # File containing environment variables not pushed due to .gitignore
+🔹 │         # Must be created manually to run the project
+🔹 ├ ⚙️.gitignore # File listing files not to be included in the repository
+🔹 ├ 🐋compose.yaml # Docker-Compose related file for quick execution and environment setup
+🔹 └ 📜README.md # The Markdown document you are currently reading
+```
+
+- `ai_web_front`
+```shell
+📁 ┬ 📁app # Folder containing React files for rendering and routing in Next.js
+🔹 ├ 📁components # Folder containing common (frequently used) React Components
+🔹 ├ 📁public # Folder containing static files like images, static data
+🔹 ├ 📁documents # Various document files linked with README.md
+🔹 ├ 📁notice # Folder for PNU study group notice files
+🔹 ├ ⚙️.gitignore # .gitignore list automatically generated by Next.js
+🔹 ├ 🐋dockerfile # File containing Next.js execution commands for Docker execution
+🔹 ├ 🪛jsconfig.json # javascript configuration file
+🔹 ├ 🪛next.config.mjs # Next.js configuration file
+🔹 ├ 🪛package-lock.json # File containing module dependencies required for the package
+🔹 ├ 🪛package.json # File containing components required for the package
+🔹 └ 📜README.md # README.md automatically generated by Next.js
+```
+
+- `ai-web-back`
+```shell
+📁 ┬ 📁api # Folder containing API functions. Routed to /api/**
+🔹 ├ 📁myapp # Folder containing basic Django functions, Celery, and Django settings
+🔹 ├ 🐋dockerfile # File containing Django and Celery execution commands for Docker execution
+🔹 ├ 🪛manage.py # Main Django script file for running Django
+🔹 └ 📜pip_requirements.txt # Document listing required modules for Django, Celery, Torch
+```
+
+### 4. Installation and Usage
+
+#### 4.1. How to Run Using Docker
+
+1. Install and run Docker Desktop - [Windows Link](https://docs.docker.com/desktop/setup/install/windows-install/), [Mac Link](https://docs.docker.com/desktop/setup/install/mac-install/), [Linux Link](https://docs.docker.com/desktop/setup/install/linux/)
+2. Create a .env file in the Root (GROUP-11) folder and insert the following content:
+```shell
+# Insert the KEY issued when creating the Django project
+SECRET_KEY='django-insecure-YOUR_DJANGO_INSECURE'
+
+CORS_ORIGIN_WHITELIST_FROM='http://localhost:8080'
+CORS_ORIGIN_WHITELIST_TO='http://localhost:3000'
+
+DATABASES_ENGINE='django.db.backends.postgresql'
+DATABASES_NAME=aiweb
+DATABASES_USER=aiweb
+DATABASES_PASSWORD='YOUR POSTGRESQL PASSWORD'
+DATABASES_HOST=postgres
+# Use the value below when running Back-End individually without Docker
+# DATABASES_HOST='YOUR DB HOST, default: localhost'
+DATABASES_PORT=5432
+
+# Currently, the script to set REDIS_USER in Docker is not configured,
+# so entering a value other than an empty string will cause an error.
+REDIS_USER=''
+REDIS_PASSWORD='YOUR REDIS PASSWORD'
+REDIS_URL=redis
+# Use the value below when running Back-End individually without Docker
+# REDIS_URL='YOUR REDIS HOST, default: localhost'
+```
+
+3. Using the Terminal, navigate to the Root folder (Group-11) and run the following command. The first run may take several minutes to complete.
+```shell
+docker-compose up --build -d
+```
+
+4. Check the logs of the backend-django container in Docker. 
+![Docker Log](./documents/README_img/Docker-log.png) 
+- If the following log is displayed, the container has started successfully.
+- A warning about Torch is output, but it has been confirmed to run normally.
+
+5. Access 'http://localhost:3000' using a web browser.
+
+#### 4.2. Running Each Domain Individually Without Docker
+
+Refer to the documentation for each area:
+
+-Front-End
+ - [Front-End 실행](./documents/week4/NextJS_Install_and_Setting.md)
+-Back-End with Torch
+ - [Back-End 실행 -1-](./documents/week5/Django_Install_and_Setting.md)
+ - [Back-End 실행 -2-](./documents/week6/RESTAPI_구현-1-.md)
+
+5. Team Introduction
+
+> Introduce team members & role distribution per member & write down simple contact information.
+
+#### Hungry People
+
+| 이동훈 | 조현성 | 안소희 |
+|:-------:|:-------:|:-------:|
+|<a href="https://github.com/bluelemon61"><img width="100px" alt="이동훈" src="https://avatars.githubusercontent.com/u/67902252?v=4" /></a> | <a href="https://github.com/hyunsung1221"><img width="100px" alt="조현성" src="https://avatars.githubusercontent.com/u/138447029?v=4" /></a> | <a href="https://github.com/soheean1370"><img width="100px" alt="안소희" src="https://avatars.githubusercontent.com/u/127065983?v=4" /></a> |
+| therqq13@pusan.ac.kr | sungsam3312@pusan.ac.kr | soheean1370@pusan.ac.kr |
+| Overall Lead <br> Infrastructure Setup | PyTorch Development | PyTorch Development |
+
+| 박준혁 | 박상훈 |곽도연 |
+|:-------:|:-------:|:-------:|
+|<a href="https://github.com/JakeFRCSE"><img width="100px" alt="박준혁" src="https://avatars.githubusercontent.com/u/162955476?v=4" /></a> | <a href="https://github.com/sanghunii"><img width="100px" alt="박상훈" src="https://avatars.githubusercontent.com/u/152972679?v=4" /></a>| <a href="https://github.com/Karryun"><img width="100px" alt="곽도연" src="https://avatars.githubusercontent.com/u/165464282?v=4" /></a> |
+| eppi001004@gmail.com | sanghoon556@pusan.ac.kr |gdy0210@pusan.ac.kr |
+| Backend Development | Backend Development | Frontend Development |
