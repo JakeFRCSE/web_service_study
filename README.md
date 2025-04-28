@@ -391,10 +391,10 @@ docker-compose up --build -d
 Refer to the documentation for each area:
 
 -Front-End
- - [Front-End 실행](./documents/week4/NextJS_Install_and_Setting.md)
+ - [Front-End Execution](./documents/week4/NextJS_Install_and_Setting.md)
 -Back-End with Torch
- - [Back-End 실행 -1-](./documents/week5/Django_Install_and_Setting.md)
- - [Back-End 실행 -2-](./documents/week6/RESTAPI_구현-1-.md)
+ - [Back-End Execution -1-](./documents/week5/Django_Install_and_Setting.md)
+ - [Back-End Execution -2-](./documents/week6/RESTAPI_구현-1-.md)
 
 ### 5. Team Introduction
 
