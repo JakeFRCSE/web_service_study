@@ -212,7 +212,7 @@ docker-compose up --build -d
 
 ### 1. Project Introduction
 #### 1.1. Development Background and Necessity
-A `McDonald's Review Data Star Rating Prediction` competition was held within AID (AI Club of the Department of Information and Computer Engineering). A model was developed that predicts the star rating of a review when given the review text (in English) for a McDonald's store. The purpose is to deploy this developed model as a web service so it can be demonstrated. This toy project was started because there was a need for an environment where anyone could try out the model, rather than it being just a one-time creation for the competition.
+A `McDonald's Review Data Star Rating Prediction` competition was held within AID (AI Club of the Department of Computer Science and Engineering). A model was developed that predicts the star rating of a review when given the review text (in English) for a McDonald's store. The purpose is to deploy this developed model as a web service so it can be demonstrated. This toy project was started because there was a need for an environment where anyone could try out the model, rather than it being just a one-time creation for the competition.
 
 #### 1.2. Development Goals and Main Content
 The goal is to study and experience the entire process of deploying a program that predicts the star rating a user would give based on their English review of a McDonald's store. Through this toy project, the aim is to study how web technologies and PyTorch models can be integrated, and ultimately acquire the ability to create environments where anyone can easily use AI models, moving beyond just training models and using them in a Python environment.
